@@ -1,13 +1,13 @@
 import express, { Express, Request, Response } from "express";
 import path from 'path'
 import cors from "cors";
-import UserRoute from "./routes/UserRoute";
-import db from "./config/Database"
 import { RequestHandler } from 'express-serve-static-core';
+import db from "./config/Database"
+
+import UserRoute from "./routes/UserRoute";
 
 const app: Express = express();
 const PORT = 3000;
-
 
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(cors());
