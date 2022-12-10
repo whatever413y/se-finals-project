@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
+import { useNavigate } from "react-router-dom";
+
 
 const defaultFormFields = {
     username: '',
@@ -10,45 +12,37 @@ const defaultFormFields = {
 const Login: React.FC = () => {
     const [formFields, setFormFields] = useState(defaultFormFields)
     const { username, password } = formFields
+    const navigate = useNavigate()
 
-    const resetFormFields = () => {
-      return (
-        setFormFields(defaultFormFields)
-      );
-    }
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const formHandler = (event: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target
       setFormFields({...formFields, [name]: value })
     }
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const loginHandler = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      try {
-
-        await Axios.post('http://localhost:3000/users', {username: username, password: password})
-        .then(() => {
-            alert('Created a new user')
-          })
-
-        resetFormFields()
-      } catch (error) {
-        alert('User Sign In Failed');
-      }
+      const input = { username: username, password: password }
+      await Axios.post('http://localhost:3000/user/login', input).then((response) => {
+        if(response.data === "fail") {
+          alert('User Sign In Failed')
+        } else {
+          navigate('/home')
+        }
+      })
     };
   
   return (
     <div className='App-header'>
       <div className="card">
         <h2>Sign In</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={loginHandler}>
           <FormInput
             label="Username"
             type="text"
             required
             name="username"
             value={username}
-            onChange={handleChange}
+            onChange={formHandler}
           />
           <FormInput
             label="Password"
@@ -56,12 +50,12 @@ const Login: React.FC = () => {
             required
             name='password'
             value={password}
-            onChange={handleChange}
+            onChange={formHandler}
           />
           <div className="button-group">
-            <button type="submit">Sign In</button>
+            <button type="submit">Log In</button>
             <span>
-              <button type="button" onClick={resetFormFields}>Clear</button>
+              <button type="button">Register</button>
             </span>
           </div>
         </form>
