@@ -2,16 +2,17 @@ import db from "../config/Database";
 import { Request, Response } from "express";
 
 interface FormInputs {
-    name: string | null,
+    fullname: string,
     username: string,
     password: string
 }
 
 export const createUser = async(req: Request, res: Response) => {
-    const { name, username, password }: FormInputs = req.body;
+    const { fullname, username, password }: FormInputs = req.body;
     const sqlInsert = "INSERT INTO user (name, username, password, role) VALUES (?, ?, ?, 'user');"
     try {
-        db.query(sqlInsert, [name, username, password], () => {
+        console.log(sqlInsert)
+        db.query(sqlInsert, [fullname, username, password], () => {
             console.log('Successfully registered!')
         })
     } catch (error) {
@@ -38,13 +39,17 @@ export const deleteUser = async(req: Request, res: Response) =>{
 export const loginUser = async(req: Request, res: Response) => {
     const { username, password }: FormInputs = req.body;
     try {
-        const sqlFind = `SELECT username, password FROM user WHERE username='${username}' && password='${password}';`;
+        const sqlFind = `SELECT role FROM user WHERE username='${username}' && password='${password}';`;
         db.query(sqlFind, (error, result) => {
             const input = JSON.stringify(result)
-            if(input === '[]') {
+            if(input === '[{"role":"user"}]') {
+                return res.json("user");
+            } else if(input === '[{"role":"admin"}]') {
+                return res.json("admin");
+            } else {
                 return res.json("fail");
             }
-            return res.json("success");
+            
         })
     } catch (error) {
         throw error;

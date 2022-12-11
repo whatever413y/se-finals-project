@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 
 const defaultFormFields = {
+    fullname: '',
     username: '',
     password: '',
 }
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
     const [formFields, setFormFields] = useState(defaultFormFields)
-    const { username, password } = formFields
+    const { fullname, username, password } = formFields
     const navigate = useNavigate()
 
     const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,28 +21,30 @@ const Login: React.FC = () => {
     }
 
     const handleClick = () => {
-      navigate('/register')
+      navigate('/')
     }
 
-    const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
+    const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      const input = { username: username, password: password }
-      await Axios.post('http://localhost:3000/user/login', input).then((response) => {
-        if(response.data === "admin") {
-          navigate('/admin')
-        } else if (response.data === "user") {
-          navigate('/home')
-        } else {
-          alert('User Sign In Failed')
-        }
+      const input = { fullname: fullname, username: username, password: password }
+      await Axios.post('http://localhost:3000/user/register', input).then(() => {
+        alert('Registered Successfully!' )
       })
     };
   
   return (
     <div className='App-header'>
       <div className="card">
-        <h2>Sign In</h2>
-        <form onSubmit={handleLogin}>
+        <h2>Register</h2>
+        <form onSubmit={handleRegister}>
+        <FormInput
+            label="Name"
+            type="text"
+            required
+            name="fullname"
+            value={fullname}
+            onChange={handleFormFields}
+          />
           <FormInput
             label="Username"
             type="text"
@@ -59,9 +62,9 @@ const Login: React.FC = () => {
             onChange={handleFormFields}
           />
           <div className="button-group">
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
             <span>
-              <button type="button" onClick={handleClick} >Register</button>
+              <button type="button" onClick={handleClick} >Login</button>
             </span>
           </div>
         </form>
@@ -70,4 +73,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Register;
