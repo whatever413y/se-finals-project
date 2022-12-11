@@ -5,7 +5,6 @@ type Book = {
     ISBN: string,
     bookTitle: string,
     author: string,
-    language: string,
     genre: Genre[]
 }
   

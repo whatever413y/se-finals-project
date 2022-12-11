@@ -21,16 +21,25 @@ export const createUser = async(req: Request, res: Response) => {
 }
  
 export const updateUser = async(req: Request, res: Response) => {
+    const { fullname, username, password }: FormInputs = req.body;
+    const oldUsername = req.body.oldUsername
     try {
-
+        const sqlUpdate = `UPDATE user SET name='${fullname}', username='${username}', password='${password}' WHERE username='${oldUsername}';`;
+        db.query(sqlUpdate, () => {
+            console.log(`Update completed!`)
+        })
     } catch (error) {
         throw error;
     }
 }
  
-export const deleteUser = async(req: Request, res: Response) =>{
+export const deleteUser = async(req: Request, res: Response) => {
+    const { username }: FormInputs = req.body;
     try {
-
+        const sqlDelete = `DELETE FROM user WHERE username='${username}';`;
+        db.query(sqlDelete, () => {
+            console.log(`Deleted a User ${username}`)
+        })
     } catch (error) {
         throw error;
     }
@@ -49,7 +58,6 @@ export const loginUser = async(req: Request, res: Response) => {
             } else {
                 return res.json("fail");
             }
-            
         })
     } catch (error) {
         throw error;
