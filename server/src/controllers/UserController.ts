@@ -1,20 +1,17 @@
 import db from "../config/Database";
 import { Request, Response } from "express";
-
-interface FormInputs {
-    fullname: string,
-    username: string,
-    password: string
-}
+import FormInputs from "../models/FormInputs";
 
 export const createUser = async(req: Request, res: Response) => {
     const { fullname, username, password }: FormInputs = req.body;
-    const sqlInsert = "INSERT INTO user (name, username, password, role) VALUES (?, ?, ?, 'user');"
+    const sqlInsertUser = `INSERT INTO user (name, username, password, role) VALUES ('${fullname}', '${username}', '${password}', 'user');`
+    const sqlInsertInventory = `INSERT INTO inventory VALUES (NULL);`
+    const sqlUserUpdate = `UPDATE user SET inventory_id = user_id WHERE username='${username}';`
     try {
-        console.log(sqlInsert)
-        db.query(sqlInsert, [fullname, username, password], () => {
-            console.log('Successfully registered!')
-        })
+        db.query(sqlInsertUser)
+        db.query(sqlInsertInventory)
+        db.query(sqlUserUpdate)
+        return res.json("success")
     } catch (error) {
         throw error;
     }
@@ -36,10 +33,11 @@ export const updateUser = async(req: Request, res: Response) => {
 export const deleteUser = async(req: Request, res: Response) => {
     const { username }: FormInputs = req.body;
     try {
-        const sqlDelete = `DELETE FROM user WHERE username='${username}';`;
-        db.query(sqlDelete, () => {
-            console.log(`Deleted a User ${username}`)
-        })
+        const sqlDeleteUser = `DELETE FROM user WHERE username='${username}';`;
+        const sqlDeleteInventory = `DELETE FROM inventory WHERE username='${username}';`
+        db.query(sqlDeleteInventory)
+        db.query(sqlDeleteUser)
+        res.json("success")
     } catch (error) {
         throw error;
     }

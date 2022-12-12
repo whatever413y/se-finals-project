@@ -27,8 +27,10 @@ const Register: React.FC = () => {
     const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       const input = { fullname: fullname, username: username, password: password }
-      await Axios.post('http://localhost:3000/user/register', input).then(() => {
-        alert('Registered Successfully!' )
+      await Axios.post('http://localhost:3000/user/register', input).then((response) => {
+        if(response.data === "success") {
+          alert('Registered Successfully!')
+        }
       })
     };
   

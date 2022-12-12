@@ -1,9 +1,10 @@
 import express from "express";
-import { } from "../controllers/InventoryController";
+import { addBook, fetchInventory, removeBook } from "../controllers/InventoryController";
  
 const router = express.Router();
  
-router.post('/inventory/book/add', );
-router.post('/inventory/book/delete', );
- 
+router.post('/inventory/add', addBook);
+router.post('/inventory/delete', removeBook);
+router.post('/inventory/fetch', fetchInventory);
+
 export default router;
