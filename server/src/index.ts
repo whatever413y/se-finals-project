@@ -5,6 +5,8 @@ import { RequestHandler } from 'express-serve-static-core';
 import db from "./config/Database"
 
 import UserRoute from "./routes/UserRoute";
+import BookRoute from "./routes/BookRoute";
+import InventoryRoute from "./routes/InventoryRoute";
 
 const app: Express = express();
 const PORT = 3000;
@@ -20,6 +22,8 @@ db.connect((err) => {
 })
 
 app.use(UserRoute);
+app.use(BookRoute);
+app.use(InventoryRoute);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
