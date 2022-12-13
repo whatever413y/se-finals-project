@@ -4,7 +4,9 @@ interface FormInputs {
     password: string,
     bookTitle: string,
     author: string,
-    genre: string
+    genre: string,
+    availability: boolean,
+    search: string
 }
 
 export default FormInputs;

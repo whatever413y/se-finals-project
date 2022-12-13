@@ -7,6 +7,7 @@ import db from "./config/Database"
 import UserRoute from "./routes/UserRoute";
 import BookRoute from "./routes/BookRoute";
 import InventoryRoute from "./routes/InventoryRoute";
+import SearchRoute from "./routes/SearchRoute";
 
 const app: Express = express();
 const PORT = 3000;
@@ -24,6 +25,7 @@ db.connect((err) => {
 app.use(UserRoute);
 app.use(BookRoute);
 app.use(InventoryRoute);
+app.use(SearchRoute);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
