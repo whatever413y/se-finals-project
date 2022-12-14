@@ -3,15 +3,21 @@ import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
-
 const defaultFormFields = {
     username: '',
     password: '',
+}
+type User = {
+  id: number,
+  username: string,
+  fullname: string,
+  role: string
 }
 
 const Login: React.FC = () => {
     const [formFields, setFormFields] = useState(defaultFormFields)
     const { username, password } = formFields
+    const [user, setUser] = useState<User>()
     const navigate = useNavigate()
 
     const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,25 +29,28 @@ const Login: React.FC = () => {
       navigate('/register')
     }
 
-    const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
+    const handleUserLogin = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       const input = { username: username, password: password }
       await Axios.post('http://localhost:3000/user/login', input).then((response) => {
-        if(response.data === "admin") {
+        const user: User = response.data
+        if(user.role === "admin") {
+          setUser(user)
           navigate('/admin')
-        } else if (response.data === "user") {
+        } else if (user.role === "user") {
+          setUser(user)
           navigate('/home')
         } else {
           alert('User Sign In Failed')
         }
       })
     };
-  
+
   return (
     <div className='App-header'>
       <div className="card">
         <h2>Sign In</h2>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleUserLogin}>
           <FormInput
             label="Username"
             type="text"
