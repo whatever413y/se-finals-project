@@ -8,6 +8,7 @@ import UserRoute from "./routes/UserRoute";
 import BookRoute from "./routes/BookRoute";
 import InventoryRoute from "./routes/InventoryRoute";
 import SearchRoute from "./routes/SearchRoute";
+import BorrowRoute from "./routes/BorrowRoute";
 
 const app: Express = express();
 const PORT = 3000;
@@ -26,6 +27,7 @@ app.use(UserRoute);
 app.use(BookRoute);
 app.use(InventoryRoute);
 app.use(SearchRoute);
+app.use(BorrowRoute);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

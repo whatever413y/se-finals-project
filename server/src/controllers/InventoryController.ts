@@ -3,11 +3,17 @@ import { Request, Response } from "express";
 import FormInputs from "../models/FormInputs";
 
 export const addBook = async(req: Request, res: Response) => {
-    const { bookTitle, username }: FormInputs = req.body;
-    const sqlInsert = `INSERT INTO inventory (username, bookTitle) 
-    VALUES ('${username}', '${bookTitle}');`
+    const { id, bookTitle }: FormInputs = req.body;
+    const sqlInsert = `INSERT INTO inventory (user_id, bookTitle) 
+    VALUES ('${id}', '${bookTitle}');`
+    const sqlUpdateInventory = `UPDATE inventory INNER JOIN book ON inventory.bookTitle=book.bookTitle 
+    SET inventory.book_id=book.id WHERE book.bookTitle='${bookTitle}';`
+    const sqlUpdateBook = `UPDATE book INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
+    SET book.user_id=inventory.id WHERE inventory.bookTitle='${bookTitle}';`
     try {
         db.query(sqlInsert)
+        db.query(sqlUpdateInventory)
+        db.query(sqlUpdateBook)
         return res.json("success")
     } catch (error) {
         throw error;
@@ -15,9 +21,12 @@ export const addBook = async(req: Request, res: Response) => {
 }
 
 export const removeBook = async(req: Request, res: Response) =>{
-    const { bookTitle, username }: FormInputs = req.body;
-    const sqlDelete = `DELETE FROM inventory WHERE username='${username}' AND bookTitle='${bookTitle}';`
+    const { bookTitle }: FormInputs = req.body;
+    const sqlUpdate = `UPDATE book INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
+    SET book.user_id=NULL WHERE inventory.bookTitle='${bookTitle}';`
+    const sqlDelete = `DELETE FROM inventory WHERE bookTitle='${bookTitle}';`
     try {
+        db.query(sqlUpdate)
         db.query(sqlDelete)
         return res.json("success")
     } catch (error) {
@@ -26,8 +35,8 @@ export const removeBook = async(req: Request, res: Response) =>{
 }
 
 export const fetchInventory = async(req: Request, res: Response) => {
-    const { username }: FormInputs = req.body;
-    const sqlQuery = `SELECT bookTitle from inventory WHERE username='${username}'`
+    const { id }: FormInputs = req.body;
+    const sqlQuery = `SELECT bookTitle from inventory WHERE user_id='${id}'`
     try {
         db.query(sqlQuery, (error, result) => {
             return res.json(result)
