@@ -1,9 +1,9 @@
 import express from "express";
-import { createBook, deleteBook } from "../controllers/BookController";
+import { createBookController, deleteBookController } from "../controllers/BookController";
  
 const router = express.Router();
  
-router.post('/book/add', createBook);
-router.post('/book/delete', deleteBook);
+router.post('/book/add', createBookController);
+router.post('/book/delete', deleteBookController);
  
 export default router;

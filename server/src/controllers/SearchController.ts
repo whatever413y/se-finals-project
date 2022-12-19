@@ -1,25 +1,25 @@
-import db from "../config/Database";
 import { Request, Response } from "express";
 import FormInputs from "../models/FormInputs";
+import { searchBook, searchGenre } from "../services/SearchService";
 
-export const searchBook = async(req: Request, res: Response) => {
-    const { search}: FormInputs = req.body;
-    const sqlSelect = `SELECT bookTitle FROM book WHERE bookTitle='${search}' OR authorName='${search}';`
+export const searchBookController = async (req: Request, res: Response) => {
     try {
-        db.query(sqlSelect, (error, result) => {
-            return res.json(result)
+        const input: FormInputs = req.body;
+        searchBook(input, (result: string) => {
+            const results = JSON.parse(result)
+            return res.json(results)
         })
     } catch (error) {
         throw error;
     }
 }
 
-export const searchGenre = async(req: Request, res: Response) => {
-    const { genre }: FormInputs = req.body;
-    const sqlSelect = `SELECT bookTitle from book WHERE genre='${genre}';`
+export const searchGenreController = async (req: Request, res: Response) => {
     try {
-        db.query(sqlSelect, (error, result) => {
-            return res.json(result)
+        const input: FormInputs = req.body;
+        searchGenre(input, (result: string) => {
+            const results = JSON.parse(result)
+            return res.json(results)
         })
     } catch (error) {
         throw error;

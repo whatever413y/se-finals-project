@@ -56,7 +56,9 @@ CREATE TABLE `borrow` (
   `returnDate` DATE NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_inventory` FOREIGN KEY (`user_id`)  
-  REFERENCES inventory(id) ON DELETE CASCADE ON UPDATE CASCADE
+  REFERENCES inventory(user_id) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE
 );
 
 /* USERS */
@@ -73,6 +75,7 @@ INSERT INTO `librarydb`.`book` (`bookTitle`, `authorName`, `genre`, `isAvailable
 INSERT INTO `librarydb`.`book` (`bookTitle`, `authorName`, `genre`, `isAvailable`) 
     VALUES ('Harry Potter and the Chamber of Secrets', 'J. K. Rowling', 'Fantasy', TRUE);
 
+/* INVENTORY */
 /* Add books to inventory */
 INSERT INTO inventory (user_id, bookTitle) 
     VALUES (1, 'Game of Thrones');
@@ -111,4 +114,13 @@ DELETE FROM inventory WHERE bookTitle='Sherlock Holmes';
 DELETE FROM inventory WHERE bookTitle='Harry Potter and the Chamber of Secrets';
 
 /* Get all books in the user's inventory */
-SELECT bookTitle from inventory WHERE user_id='2'
+SELECT bookTitle from inventory WHERE user_id='2';
+
+/* BORROW */
+/* Change book availability to false */
+UPDATE book INNER JOIN inventory ON book.user_id=inventory.user_id 
+    SET isAvailable=FALSE WHERE inventory.user_id=1;
+
+/* Create borrow */
+INSERT INTO borrow (user_id, borrowDate, returnDate) 
+    VALUES (1, '2022-12-19', '2022-12-26');

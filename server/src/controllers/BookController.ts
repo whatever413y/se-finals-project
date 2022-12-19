@@ -1,24 +1,22 @@
-import db from "../config/Database";
 import { Request, Response } from "express";
 import FormInputs from "../models/FormInputs";
+import { createBook, deleteBook } from "../services/BookService";
 
-export const createBook = async(req: Request, res: Response) => {
-    const { bookTitle, author, genre }: FormInputs = req.body;
-    const sqlInsertBook = `INSERT INTO librarydb.book (bookTitle, authorName, genre, isAvailable) VALUES 
-    ('${bookTitle}', '${author}', '${genre}', TRUE);`
+
+export const createBookController = async (req: Request, res: Response) => {
     try {
-        db.query(sqlInsertBook)
+        const input: FormInputs = req.body;
+        createBook(input)
         return res.json("success")
     } catch (error) {
         throw error;
     }
 }
 
-export const deleteBook = async(req: Request, res: Response) =>{
-    const { bookTitle }: FormInputs = req.body;
+export const deleteBookController = async (req: Request, res: Response) =>{
     try {
-        const sqlDeleteBook = `DELETE FROM book WHERE bookTitle='${bookTitle}';`
-        db.query(sqlDeleteBook)
+        const input: FormInputs = req.body;
+        deleteBook(input)
         return res.json("success")
     } catch (error) {
         throw error;
