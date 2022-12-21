@@ -1,4 +1,4 @@
-import { findBook, getAll } from "../handlers/SearchHandler";
+import { findBook, getAll } from "../repositories/SearchRepository";
 import FormInputs from "../models/FormInputs";
 
 export const searchBook = (input: FormInputs, callback: Function) => {

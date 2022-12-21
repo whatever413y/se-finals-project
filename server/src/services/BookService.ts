@@ -1,5 +1,5 @@
 import FormInputs from "../models/FormInputs";
-import { addBook, removeBook } from "../handlers/BookHandler";
+import { addBook, removeBook } from "../repositories/BookRepository";
 
 export const createBook = (input: FormInputs) => {
     try {

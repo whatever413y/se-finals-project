@@ -1,6 +1,6 @@
 import FormInputs from "../models/FormInputs";
 import User from "../models/UserModel";
-import { addUser, updateUserInfo, deleteUserInfo, userLoginHandler } from "../handlers/UserHandler";
+import { addUser, updateUserInfo, deleteUserInfo, userLoginHandler } from "../repositories/UserRepository";
 
 export const createUser = (input: FormInputs) => {
     try {
