@@ -2,7 +2,7 @@ import db from "../config/Database";
 import { Request, Response } from "express";
 import FormInputs from "../models/FormInputs";
 
-export const addBook = async (req: Request, res: Response) => {
+export const addBookController = async (req: Request, res: Response) => {
     const { bookTitle }: FormInputs = req.body;
     const id: FormInputs = req.body.id
     const sqlInsert = 
