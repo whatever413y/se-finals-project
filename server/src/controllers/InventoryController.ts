@@ -1,58 +1,41 @@
-import db from "../config/Database";
 import { Request, Response } from "express";
 import FormInputs from "../models/FormInputs";
+import { inventoryService } from "../services/InventoryService";
 
-export const createAddBookController = async (req: Request, res: Response) => {
-    const { bookTitle }: FormInputs = req.body;
-    const id: FormInputs = req.body.id
-    const sqlInsert = 
-    `INSERT INTO inventory (user_id, bookTitle) 
-    VALUES ('${id}', '${bookTitle}');`
-    const sqlUpdateInventory = 
-    `UPDATE inventory INNER JOIN book ON inventory.bookTitle=book.bookTitle 
-    SET inventory.book_id=book.id 
-    WHERE book.bookTitle='${bookTitle}';`
-    const sqlUpdateBook = 
-    `UPDATE book INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
-    SET book.user_id=inventory.id 
-    WHERE inventory.bookTitle='${bookTitle}';`
-    try {
-        db.query(sqlInsert)
-        db.query(sqlUpdateInventory)
-        db.query(sqlUpdateBook)
-        return res.json("success")
-    } catch (error) {
-        throw error;
+class InventoryController {
+
+    public addBook = async (req: Request, res: Response) => {
+        try {
+            const input: FormInputs = req.body;
+            const id: FormInputs = req.body.id
+            inventoryService.addBook(input, id)
+            return res.json("success")
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    public removeBook = async (req: Request, res: Response) => {
+        try {
+            const input: FormInputs = req.body;
+            inventoryService.removeBook(input)
+            return res.json("success")
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    public fetchInventory = async (req: Request, res: Response) => {
+        try {
+            const id: FormInputs = req.body.id
+            inventoryService.fetchInventory(id, (result: string) => {
+                const results: [] = JSON.parse(result)
+                return res.json(results)
+            })
+        } catch (error) {
+            throw error;
+        }
     }
 }
 
-export const removeBook = async (req: Request, res: Response) =>{
-    const { bookTitle }: FormInputs = req.body;
-    const sqlUpdate = 
-    `UPDATE book INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
-    SET book.user_id=NULL 
-    WHERE inventory.bookTitle='${bookTitle}';`
-    const sqlDelete = 
-    `DELETE FROM inventory 
-    WHERE bookTitle='${bookTitle}';`
-    try {
-        db.query(sqlUpdate)
-        db.query(sqlDelete)
-        return res.json("success")
-    } catch (error) {
-        throw error;
-    }
-}
-/*
-export const fetchInventory = async(req: Request, res: Response) => {
-    const { id }: FormInputs = req.body;
-    const sqlQuery = 
-    `SELECT bookTitle from inventory WHERE user_id='${id}'`
-    try {
-        db.query(sqlQuery, (error, result) => {
-            return res.json(result)
-        })
-    } catch (error) {
-        throw error;
-    }
-}*/
+export const inventoryController = new InventoryController()

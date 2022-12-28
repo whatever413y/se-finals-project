@@ -1,9 +1,9 @@
 import express from "express";
-import { searchBookController, searchGenreController } from "../controllers/SearchController";
+import { searchController } from "../controllers/SearchController";
  
 const router = express.Router();
  
-router.post('/search/book', searchBookController);
-router.post('/search/genre', searchGenreController);
+router.post('/search/book', searchController.searchBook);
+router.post('/search/genre', searchController.searchGenre);
  
 export default router;

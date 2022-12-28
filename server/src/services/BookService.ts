@@ -1,18 +1,23 @@
 import FormInputs from "../models/FormInputs";
-import { addBook, removeBook } from "../repositories/BookRepository";
+import { bookRepo } from "../repositories/BookRepository";
 
-export const createBook = (input: FormInputs) => {
-    try {
-        addBook(input)
-    } catch (error) {
-        throw error;
+class BookService {
+
+    public createBook = (input: FormInputs) => {
+        try {
+            bookRepo.addBook(input)
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    public deleteBook = (input: FormInputs) => {
+        try {
+            bookRepo.deleteBook(input)
+        } catch (error) {
+            throw error;
+        }
     }
 }
 
-export const deleteBook = (input: FormInputs) => {
-    try {
-        removeBook(input)
-    } catch (error) {
-        throw error;
-    }
-}
+export const bookService = new BookService()
