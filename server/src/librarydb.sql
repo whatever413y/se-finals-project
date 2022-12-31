@@ -62,17 +62,17 @@ CREATE TABLE `borrow` (
 );
 
 /* USERS */
-INSERT INTO `librarydb`.`user` (`username`, `password`, `fullname`, `role`) 
+INSERT INTO user (username, password, fullname, role) 
 VALUES ('admin', 'root', 'Administrator', 'admin');
-INSERT INTO `librarydb`.`user` (`username`, `password`, `fullname`, `role`) 
+INSERT INTO user (username, password, fullname, role) 
 VALUES ('testusername', 'testpassword', 'testname', 'user');
 
 /* BOOKS */
-INSERT INTO `librarydb`.`book` (`bookTitle`, `authorName`, `genre`, `isAvailable`) 
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Game of Thrones', 'George R. R. Martin', 'Fantasy', TRUE);
-INSERT INTO `librarydb`.`book` (`bookTitle`, `authorName`, `genre`, `isAvailable`) 
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Sherlock Holmes', 'Arthur Conan Doyle', 'Mystery', TRUE);
-INSERT INTO `librarydb`.`book` (`bookTitle`, `authorName`, `genre`, `isAvailable`) 
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Harry Potter and the Chamber of Secrets', 'J. K. Rowling', 'Fantasy', TRUE);
 
 /* INVENTORY */
