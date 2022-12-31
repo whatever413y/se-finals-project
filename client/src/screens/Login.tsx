@@ -2,16 +2,11 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import User from "../components/User"
 
 const defaultFormFields = {
     username: '',
     password: '',
-}
-type User = {
-  id: number,
-  username: string,
-  fullname: string,
-  role: string
 }
 
 const Login: React.FC = () => {
@@ -36,10 +31,10 @@ const Login: React.FC = () => {
         const user: User = response.data
         if(user.role === "admin") {
           setUser(user)
-          navigate('/admin')
+          navigate('/admin', {state: {user: user}})
         } else if (user.role === "user") {
           setUser(user)
-          navigate('/home')
+          navigate('/home', {state: {user: user}})
         } else {
           alert('User Sign In Failed')
         }

@@ -6,7 +6,7 @@ class InventoryController {
 
     public addBook = async (req: Request, res: Response) => {
         try {
-            const input: FormInputs = req.body;
+            const input: FormInputs = req.body.book;
             const id: FormInputs = req.body.id
             inventoryService.addBook(input, id)
             return res.json("success")
@@ -17,7 +17,7 @@ class InventoryController {
 
     public removeBook = async (req: Request, res: Response) => {
         try {
-            const input: FormInputs = req.body;
+            const input: FormInputs = req.body.book;
             inventoryService.removeBook(input)
             return res.json("success")
         } catch (error) {

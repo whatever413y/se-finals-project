@@ -6,7 +6,7 @@ class SearchRepository {
     public findBook = (input: FormInputs, callback: Function) => {
         const { search }: FormInputs = input
         const sqlSelect = 
-        `SELECT bookTitle FROM book 
+        `SELECT id, bookTitle, authorName, isAvailable FROM book 
         WHERE bookTitle='${search}' OR authorName='${search}';`
         try {
             db.query(sqlSelect, (error, result) => {
@@ -19,10 +19,10 @@ class SearchRepository {
     }
     
     public getAll = (input: FormInputs, callback: Function) => {
-        const { genre }: FormInputs = input
+        const { search }: FormInputs = input
         const sqlSelect = 
-        `SELECT bookTitle from book 
-        WHERE genre='${genre}';`
+        `SELECT id, bookTitle, authorName, isAvailable from book 
+        WHERE genre='${search}';`
         try {
             db.query(sqlSelect, (error, result) => {
                 const res: string = JSON.stringify(result)
