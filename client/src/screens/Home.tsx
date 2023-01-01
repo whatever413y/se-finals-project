@@ -3,6 +3,7 @@ import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
 import { useLocation } from "react-router-dom";
 import User from "../components/User"
+import categories from "../components/Categories";
 
 const defaultFormFields = {
   search: '',
@@ -71,11 +72,10 @@ const Home: React.FC = () => {
     <div>
       <div className='App-header'>
       <div className="card">
-        <h2>Category Search</h2>
-        <div>
-        <button onClick={() => handleCategorySearch('Fantasy')}>Fantasy</button>
-        <button onClick={() => handleCategorySearch('Mystery')}>Mystery</button>
-        </div>
+        <h2>Category Search</h2>  
+        {categories.map((category, index) => {
+          return <button onClick={() => handleCategorySearch(`${category}`)}>{category}</button>
+        })}
         <form onSubmit={handleSearch}>
           <FormInput
             label="Search"
