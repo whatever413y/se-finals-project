@@ -1,45 +1,41 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
-import Axios from 'axios'
+import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { handleFormFields } from "../components/FormFields";
 
 
 const defaultFormFields = {
-    fullname: '',
-    username: '',
-    password: '',
+  fullname: '',
+  username: '',
+  password: '',
 }
 
 const Register: React.FC = () => {
-    const [formFields, setFormFields] = useState(defaultFormFields)
-    const { fullname, username, password } = formFields
-    const navigate = useNavigate()
+  const [formFields, setFormFields] = useState(defaultFormFields)
+  const { fullname, username, password } = formFields
+  const navigate = useNavigate()
 
-    const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = event.target
-      setFormFields({...formFields, [name]: value })
-    }
+  const handleClick = () => {
+    navigate('/')
+  }
 
-    const handleClick = () => {
-      navigate('/')
-    }
+  const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const input = { fullname: fullname, username: username, password: password }
+    await Axios.post('http://localhost:3000/user/register', input).then((response) => {
+      if (response.data === "success") {
+        alert('Registered Successfully!')
+      }
+    })
+  };
 
-    const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
-      const input = { fullname: fullname, username: username, password: password }
-      await Axios.post('http://localhost:3000/user/register', input).then((response) => {
-        if(response.data === "success") {
-          alert('Registered Successfully!')
-        }
-      })
-    };
-  
   return (
     <div className='App-header'>
       <div className="card">
         <h2>Register</h2>
         <form onSubmit={handleRegister}>
-        <FormInput
+          <FormInput
             label="Name"
             type="text"
             required

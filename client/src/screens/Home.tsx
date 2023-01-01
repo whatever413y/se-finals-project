@@ -1,8 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
-import Axios from 'axios'
+import Axios from 'axios';
 import { useLocation } from "react-router-dom";
-import User from "../components/User"
+import User from "../components/User";
+import { handleFormFields } from "../components/FormFields";
 
 const defaultFormFields = {
   search: '',
@@ -22,11 +23,6 @@ const Home: React.FC = () => {
   const user: User = location.state.user
   const [results, setResults] = useState([defaultResults])
 
-  const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-    setFormFields({...formFields, [name]: value })
-  }
-
   const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const input = { search: search }
@@ -45,19 +41,19 @@ const Home: React.FC = () => {
   const addToInventory = async (book: string) => {
     const input = { book: book, id: user.id }
     await Axios.post('http://localhost:3000/inventory/add', input)
-    .then((response) => {
-      // backend needs to return a callbock for confirmation
-      // alert("Added Successfully")
-    })
+      .then((response) => {
+        // backend needs to return a callbock for confirmation
+        // alert("Added Successfully")
+      })
   }
 
   const removeFromInventory = async (book: string) => {
-    const input = { book: book}
+    const input = { book: book }
     await Axios.post('http://localhost:3000/inventory/delete', input)
-    .then((response) => {
-      // backend needs to return a callbock for confirmation
-      // alert("Removed Successfully")
-    })
+      .then((response) => {
+        // backend needs to return a callbock for confirmation
+        // alert("Removed Successfully")
+      })
   }
 
   const handleInventory = async () => {
@@ -70,59 +66,59 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className='App-header'>
-      <div className="card">
-        <h2>Category Search</h2>
-        <div>
-        <button onClick={() => handleCategorySearch('Fantasy')}>Fantasy</button>
-        <button onClick={() => handleCategorySearch('Mystery')}>Mystery</button>
-        </div>
-        <form onSubmit={handleSearch}>
-          <FormInput
-            label="Search"
-            type="text"
-            required
-            name="search"
-            value={search}
-            onChange={handleFormFields}
-          />
-          <div className="button-group">
-            <button type="submit">Search</button>
-            <span>
-              <button type="button" onClick={handleInventory}>Open Inventory</button>
-            </span>
+        <div className="card">
+          <h2>Category Search</h2>
+          <div>
+            <button onClick={() => handleCategorySearch('Fantasy')}>Fantasy</button>
+            <button onClick={() => handleCategorySearch('Mystery')}>Mystery</button>
           </div>
-        </form>
-        <div>
-        <h2>Results</h2>
-        <table className="table is-striped is-fullwidth">
-          <thead>
-            <tr>
-              <th>Book</th>
-              <th>Author</th>
-              <th>isAvailable?</th>
-            </tr>
-          </thead>
-          <tbody>
-            {results.map((book, index) => (
-              <tr key={book.id}>
-                <td>{book.bookTitle}</td>
-                <td>{book.authorName}</td>
-                <td>{book.isAvailable}</td>
-                <td>
-                  <button onClick={() => addToInventory(book.bookTitle)}>
-                    Add</button>
-                </td>
-                <td>
-                  <button onClick={() => removeFromInventory(book.bookTitle)
-                  .then(handleInventory)}>
-                    Remove</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      </div>
+          <form onSubmit={handleSearch}>
+            <FormInput
+              label="Search"
+              type="text"
+              required
+              name="search"
+              value={search}
+              onChange={handleFormFields}
+            />
+            <div className="button-group">
+              <button type="submit">Search</button>
+              <span>
+                <button type="button" onClick={handleInventory}>Open Inventory</button>
+              </span>
+            </div>
+          </form>
+          <div>
+            <h2>Results</h2>
+            <table className="table is-striped is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Book</th>
+                  <th>Author</th>
+                  <th>isAvailable?</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.map((book, index) => (
+                  <tr key={book.id}>
+                    <td>{book.bookTitle}</td>
+                    <td>{book.authorName}</td>
+                    <td>{book.isAvailable}</td>
+                    <td>
+                      <button onClick={() => addToInventory(book.bookTitle)}>
+                        Add</button>
+                    </td>
+                    <td>
+                      <button onClick={() => removeFromInventory(book.bookTitle)
+                        .then(handleInventory)}>
+                        Remove</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );
