@@ -2,7 +2,8 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios';
 import { useLocation } from "react-router-dom";
-import User from "../components/User";
+import User from "../components/User"
+import categories from "../components/Categories";
 import { handleFormFields } from "../components/FormFields";
 
 const defaultFormFields = {
@@ -66,11 +67,25 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className='App-header'>
-        <div className="card">
-          <h2>Category Search</h2>
-          <div>
-            <button onClick={() => handleCategorySearch('Fantasy')}>Fantasy</button>
-            <button onClick={() => handleCategorySearch('Mystery')}>Mystery</button>
+      <div className="card">
+        <h2>Category Search</h2>  
+        {categories.map((category, index) => {
+          return <button onClick={() => handleCategorySearch(`${category}`)}>{category}</button>
+        })}
+        <form onSubmit={handleSearch}>
+          <FormInput
+            label="Search"
+            type="text"
+            required
+            name="search"
+            value={search}
+            onChange={handleFormFields}
+          />
+          <div className="button-group">
+            <button type="submit">Search</button>
+            <span>
+              <button type="button" onClick={handleInventory}>Open Inventory</button>
+            </span>
           </div>
           <form onSubmit={handleSearch}>
             <FormInput

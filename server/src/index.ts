@@ -1,6 +1,7 @@
 import express, { Express } from "express";
-import path from 'path'
+import path from "path";
 import cors from "cors";
+import dotenv from 'dotenv';
 import { RequestHandler } from 'express-serve-static-core';
 import db from "./config/Database"
 
@@ -9,6 +10,8 @@ import BookRoute from "./routes/BookRoute";
 import SearchRoute from "./routes/SearchRoute"
 import InventoryRoute from "./routes/InventoryRoute";
 import BorrowRoute from "./routes/BorrowRoute";
+
+dotenv.config()
 
 const app: Express = express();
 const PORT: number = 3000;
