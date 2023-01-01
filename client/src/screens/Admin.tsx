@@ -1,8 +1,9 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
 import { useLocation } from "react-router-dom";
 import User from "../components/User"
+import { handleFormFields } from "../components/FormFields";
 
 const defaultFormFields = {
   userId: '',
@@ -15,11 +16,6 @@ const Admin: React.FC = () => {
   const { userId, bookTitle, authorName } = formFields
   const location = useLocation()
   const user: User = location.state.user
-
-  const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-    setFormFields({ ...formFields, [name]: value })
-  }
 
   const handleUserAdmin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -59,33 +55,33 @@ const Admin: React.FC = () => {
       </div>
 
       <div className='card'>
-          <h2>Book</h2>
-          <form onSubmit={handleBookAdmin}>
-            <FormInput
-              label="bookTitle"
-              type="text"
-              required
-              name="bookTitle"
-              value={bookTitle}
-              onChange={handleFormFields}
-            />
-            <FormInput
-              label="authorName"
-              type="text"
-              required
-              name="authorName"
-              value={authorName}
-              onChange={handleFormFields}
-            />
-            <div className="button-group">
-              <button type="button">Add</button>
-              <button type="button">Delete</button>
-              <button type="button">Cancel</button>
-            </div>
-          </form>
-        </div>
+        <h2>Book</h2>
+        <form onSubmit={handleBookAdmin}>
+          <FormInput
+            label="bookTitle"
+            type="text"
+            required
+            name="bookTitle"
+            value={bookTitle}
+            onChange={handleFormFields}
+          />
+          <FormInput
+            label="authorName"
+            type="text"
+            required
+            name="authorName"
+            value={authorName}
+            onChange={handleFormFields}
+          />
+          <div className="button-group">
+            <button type="button">Add</button>
+            <button type="button">Delete</button>
+            <button type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
-        
+
   );
 };
 
