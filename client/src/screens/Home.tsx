@@ -67,26 +67,11 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className='App-header'>
-      <div className="card">
-        <h2>Category Search</h2>  
-        {categories.map((category, index) => {
-          return <button onClick={() => handleCategorySearch(`${category}`)}>{category}</button>
-        })}
-        <form onSubmit={handleSearch}>
-          <FormInput
-            label="Search"
-            type="text"
-            required
-            name="search"
-            value={search}
-            onChange={handleFormFields}
-          />
-          <div className="button-group">
-            <button type="submit">Search</button>
-            <span>
-              <button type="button" onClick={handleInventory}>Open Inventory</button>
-            </span>
-          </div>
+        <div className="card">
+          <h2>Category Search</h2>
+          {categories.map((category, index) => {
+            return <button onClick={() => handleCategorySearch(`${category}`)}>{category}</button>
+          })}
           <form onSubmit={handleSearch}>
             <FormInput
               label="Search"
@@ -102,37 +87,53 @@ const Home: React.FC = () => {
                 <button type="button" onClick={handleInventory}>Open Inventory</button>
               </span>
             </div>
-          </form>
-          <div>
-            <h2>Results</h2>
-            <table className="table is-striped is-fullwidth">
-              <thead>
-                <tr>
-                  <th>Book</th>
-                  <th>Author</th>
-                  <th>isAvailable?</th>
-                </tr>
-              </thead>
-              <tbody>
-                {results.map((book, index) => (
-                  <tr key={book.id}>
-                    <td>{book.bookTitle}</td>
-                    <td>{book.authorName}</td>
-                    <td>{book.isAvailable}</td>
-                    <td>
-                      <button onClick={() => addToInventory(book.bookTitle)}>
-                        Add</button>
-                    </td>
-                    <td>
-                      <button onClick={() => removeFromInventory(book.bookTitle)
-                        .then(handleInventory)}>
-                        Remove</button>
-                    </td>
+            <form onSubmit={handleSearch}>
+              <FormInput
+                label="Search"
+                type="text"
+                required
+                name="search"
+                value={search}
+                onChange={handleFormFields}
+              />
+              <div className="button-group">
+                <button type="submit">Search</button>
+                <span>
+                  <button type="button" onClick={handleInventory}>Open Inventory</button>
+                </span>
+              </div>
+            </form>
+            <div>
+              <h2>Results</h2>
+              <table className="table is-striped is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Book</th>
+                    <th>Author</th>
+                    <th>isAvailable?</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {results.map((book, index) => (
+                    <tr key={book.id}>
+                      <td>{book.bookTitle}</td>
+                      <td>{book.authorName}</td>
+                      <td>{book.isAvailable}</td>
+                      <td>
+                        <button onClick={() => addToInventory(book.bookTitle)}>
+                          Add</button>
+                      </td>
+                      <td>
+                        <button onClick={() => removeFromInventory(book.bookTitle)
+                          .then(handleInventory)}>
+                          Remove</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </form>
         </div>
       </div>
     </div>
