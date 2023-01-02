@@ -3,13 +3,16 @@ import FormInputs from "../models/FormInputs";
 
 class UserRepository {
     
-    public addUser = (input: FormInputs) => {
+    public addUser = (input: FormInputs, callback: Function) => {
         const { username, password, fullname }: FormInputs = input;
         const sqlInsertUser = 
         `INSERT INTO user (username, password, fullname, role) 
         VALUES ('${username}', '${password}', '${fullname}',  'user');`
     
-        db.query(sqlInsertUser)
+        db.query(sqlInsertUser, (error) => {
+            if (error) return callback("fail")
+            return callback("success")
+        })
     }
 
     public updateUserInfo = (input: FormInputs, id: FormInputs) => {

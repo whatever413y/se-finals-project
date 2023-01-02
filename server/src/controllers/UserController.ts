@@ -10,8 +10,9 @@ class UserController {
     public createUser = async (req: Request, res: Response) => {
         try {
             const input: FormInputs = req.body;
-            userService.createUser(input)
-            return res.json("success")
+            userService.createUser(input, (result: string) => {
+                return res.json(result)
+            })
         } catch (error) {
             throw error;
         }

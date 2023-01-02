@@ -15,7 +15,8 @@ CREATE TABLE `user` (
   `password` VARCHAR(45) NOT NULL,
   `fullname` VARCHAR(45) NOT NULL,
   `role` VARCHAR(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE
 );
 
 DROP TABLE IF EXISTS `book`;
