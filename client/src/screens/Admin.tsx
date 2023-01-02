@@ -1,9 +1,8 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
 import { useLocation } from "react-router-dom";
 import User from "../components/User"
-import { handleFormFields } from "../components/FormFields";
 
 const defaultFormFields = {
   userId: '',
@@ -17,9 +16,15 @@ const Admin: React.FC = () => {
   const location = useLocation()
   const user: User = location.state.user
 
+  const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
+  
+
   const handleUserAdmin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const input = { userId: userId }
+    const input = { userId: user.id }
     await Axios.post('http://localhost:3000/admin/user', input).then((response) => {
       // response here
     })
