@@ -4,10 +4,10 @@
   "description": "Example project for the react and node with typescript",
   "main": "index.js",
   "scripts": {
-    "build:dev": "tsc --watch --preserveWatchOutput",
-    "build": "webpack --watch",
-    "start:dev": "nodemon dist/index.js & webpack -w",
-    "start": "concurrently \"npm run build:dev\" \"npm run start:dev\""
+    "compile": "tsc",
+    "build": "webpack",
+    "start:dev": "nodemon dist/index.js",
+    "start": "concurrently \"npm run compile\" \"npm run build\" \"npm run start:dev\""
   },
   "keywords": [],
   "author": "",

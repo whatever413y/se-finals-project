@@ -31,7 +31,7 @@ const Login: React.FC = () => {
         const user: User = response.data
         if(user.role === "admin") {
           setUser(user)
-          navigate('/admin', {state: {user: user}})
+          navigate('/admin')
         } else if (user.role === "user") {
           setUser(user)
           navigate('/home', {state: {user: user}})

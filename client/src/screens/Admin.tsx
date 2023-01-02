@@ -1,20 +1,18 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
-import { useLocation } from "react-router-dom";
-import User from "../components/User"
 
 const defaultFormFields = {
-  userId: '',
+  userId: 0,
+  username: '',
   bookTitle: '',
   authorName: '',
+  genre: ''
 }
 
 const Admin: React.FC = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
-  const { userId, bookTitle, authorName } = formFields
-  const location = useLocation()
-  const user: User = location.state.user
+  const { userId, username, bookTitle, authorName, genre } = formFields
 
   const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -22,30 +20,43 @@ const Admin: React.FC = () => {
   };
   
 
-  const handleUserAdmin = async (event: FormEvent<HTMLFormElement>) => {
+  const handleUserDelete = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const input = { userId: user.id }
-    await Axios.post('http://localhost:3000/admin/user', input).then((response) => {
+    const input = { userId: userId, username: username }
+    await Axios.post('http://localhost:3000/user/delete', input).then((response) => {
       // response here
+      // alert("Delete Successfully")
     })
   };
 
-  const handleBookAdmin = async (event: FormEvent<HTMLFormElement>) => {
+  const handleBookAdd = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const input = { bookTitle: bookTitle, authorName: authorName }
-    await Axios.post('http://localhost:3000/admin/book', input).then((response) => {
+    const input = { bookTitle: bookTitle, authorName: authorName, genre: genre }
+    await Axios.post('http://localhost:3000/book/add', input).then((response) => {
       // response here
+      //  alert("Add Successfully")
+    })
+  };
+
+  const handleBookDelete = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const input = { id: userId }
+    await Axios.post('http://localhost:3000/book/delete', input).then((response) => {
+      // response here
+      //  alert("Add Successfully")
     })
   };
 
   return (
     <div className='App-header'>
       <div className='card'>
-        <h2>User</h2>
-        <form onSubmit={handleUserAdmin}>
+      <div>
+        <h2>Delete a User Account</h2>
+        <form onSubmit={handleUserDelete}>
           <FormInput
             label="id"
             type="number"
+            min="2"
             required
             name="userId"
             value={userId}
@@ -55,10 +66,9 @@ const Admin: React.FC = () => {
           </div>
         </form>
       </div>
-
-      <div className='card'>
-        <h2>Book</h2>
-        <form onSubmit={handleBookAdmin}>
+      <div>
+        <h2>Add Book</h2>
+        <form onSubmit={handleBookAdd}>
           <FormInput
             label="Book Title"
             type="text"
@@ -75,14 +85,35 @@ const Admin: React.FC = () => {
             value={authorName}
             onChange={handleFormFields}
           />
+          <FormInput
+            label="Genre"
+            type="text"
+            required
+            name="genre"
+            value={genre}
+            onChange={handleFormFields}
+          />
           <div className="button-group">
             <button type="submit">Add</button>
+          </div>
+        </form>
+        <h2>Delete Book</h2>
+        <form onSubmit={handleBookDelete}>
+          <FormInput
+            label="Book Title"
+            type="text"
+            required
+            name="bookTitle"
+            value={bookTitle}
+            onChange={handleFormFields}
+          />
+          <div className="button-group">
             <button type="submit">Delete</button>
           </div>
         </form>
-      </div>
+       </div>
+      </div>  
     </div>
-
   );
 };
 

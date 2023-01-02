@@ -1,4 +1,3 @@
-import { callbackify } from "util";
 import FormInputs from "../models/FormInputs";
 import User from "../models/UserModel";
 import { userRepo } from "../repositories/UserRepository";
@@ -23,9 +22,9 @@ class UserService {
         }
     }
 
-    public deleteUser = (id: FormInputs) => {
+    public deleteUser = (input: FormInputs) => {
         try {
-            userRepo.deleteUser(id)
+            userRepo.deleteUser(input)
         } catch (error) {
             throw error;
         }

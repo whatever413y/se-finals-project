@@ -23,10 +23,13 @@ class UserRepository {
         db.query(sqlUpdate)
     }
 
-    public deleteUser = (id: FormInputs) => {
-        const sqlDeleteUser = `DELETE FROM user WHERE id='${id}';`
+    public deleteUser = (input: FormInputs) => {
+        const { id, username }: FormInputs = input;
+        const sqlDeleteUser = `DELETE FROM user WHERE id='${id}' OR username='${username}';`
         
-        db.query(sqlDeleteUser)
+        db.query(sqlDeleteUser, (error) => {
+            if(error) console.log(error)
+        })
     }
 
     public handleUserLogin = (input: FormInputs, callback: Function) => {
