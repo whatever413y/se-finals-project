@@ -5,6 +5,8 @@ const categories =
 'Adventure', 
 'Horror', 
 'Science Fiction',
+'Novel',
+'Mythology',
 
 ].sort()
 

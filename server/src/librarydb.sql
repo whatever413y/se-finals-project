@@ -73,16 +73,42 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Game of Thrones', 'George R. R. Martin', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Sherlock Holmes', 'Arthur Conan Doyle', 'Mystery', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Harry Potter and the Chamber of Secrets', 'J. K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Harry Potter and the Philosopher''s Stone', 'J.K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Harry Potter and the Chamber of Secrets', 'J.K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Harry Potter and the Prisoner of Azkaban', 'J.K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Harry Potter and the Goblet of Fire', 'J.K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Harry Potter and the Order of the Phoenix', 'J.K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Harry Potter and the Half-Blood Prince', 'J.K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Harry Potter and the Deathly Hallows', 'J.K. Rowling', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Lord of the Rings: The Fellowship of the Ring', 'J.R.R. Tolkien', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Lord of the Rings: The Two Towers', 'J.R.R. Tolkien', 'Fantasy', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Lord of the Rings: The Return of the King', 'J.R.R. Tolkien', 'Fantasy', TRUE);
+
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Maze Runner', 'James Dashner', 'Science Fiction', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Maze Runner: The Scorch Trials', 'James Dashner', 'Science Fiction', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Maze Runner: The Death Cure', 'James Dashner', 'Science Fiction', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Maze Runner: The Kill Order', 'James Dashner', 'Science Fiction', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Maze Runner: The Fever Code', 'James Dashner', 'Science Fiction', TRUE);
+
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Forrest Gump', 'winston groo', 'Romantic Comedy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Maze Runner', 'James Dashner', 'Science Fiction', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Shining', 'Stephen King', 'Horror', TRUE);
+    VALUES ('Forrest Gump', 'winston groo', 'Romantic', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Haunting of Hill House', 'Shirley Jackson', 'Horror', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
@@ -107,13 +133,25 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Hell House', 'Richard Matheson,', 'Horror', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Misery', 'Stephen King', 'Horror', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Bag of Bones', 'Stephen King', 'Horror', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Pride and Prejudice', 'Jane Austen', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Life of Pi', 'Yann Martel', 'Adventure', TRUE);
+
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Shining', 'Stephen King', 'Horror', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Carrie', 'Stephen King', 'Horror', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Stand', 'Stephen King', 'Horror', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Dark Tower', 'Stephen King', 'Horror', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('It', 'Stephen King', 'Horror', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Gunslinger', 'Stephen King', 'Horror', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Misery', 'Stephen King', 'Horror', TRUE);
+
 
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Harry Potter and The Sorcerers Stone', 'J. K. Rowling', 'Fantasy', TRUE);
@@ -151,8 +189,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('DA VINCI CODE', 'Dan Brown', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Lord of the Rings', 'J. R. R. Tolkien', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Attack on Titan', 'Hajime Isayama', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Exorcist', 'William Peter Blatty', 'Horror', TRUE);
@@ -164,6 +200,46 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Call Me By Your Name', 'Andre Aciman', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Wonderful Wizard of Oz', 'L. Frank Baum', 'Fantasy', TRUE);
+
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Iliad', 'Homer', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES('The Odyssey', 'Homer', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Aeneid', 'Virgil', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Metamorphoses', 'Ovid', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Epic of Gilgamesh', 'Anonymous', 'Mythology');
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Ramayana', 'Valmiki', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Mahabharata', 'Vyasa', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Bhagavad Gita', 'Vyasa', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Popol Vuh', 'Anonymous', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Mabinogion', 'Anonymous', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Edda', 'Anonymous', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Kalevala', 'Anonymous', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Prose Edda', 'Snorri Sturluson', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Argonautica', 'Apollonius of Rhodes', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Golden Fleece', 'Apollonius of Rhodes', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Theogony', 'Hesiod', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('The Works and Days', 'Hesiod', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Theogonies', 'Hesiod', 'Mythology', TRUE);
+INSERT INTO books (bookTitle, authorName, genre, isAvailable)
+    VALUES ('Theogony', 'Hesiod', 'Mythology', TRUE);
+
 
 
 
