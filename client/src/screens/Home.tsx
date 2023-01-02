@@ -1,10 +1,9 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios';
 import { useLocation } from "react-router-dom";
 import User from "../components/User"
 import categories from "../components/Categories";
-import { handleFormFields } from "../components/FormFields";
 
 const defaultFormFields = {
   search: '',
@@ -23,6 +22,11 @@ const Home: React.FC = () => {
   const location = useLocation()
   const user: User = location.state.user
   const [results, setResults] = useState([defaultResults])
+
+  const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()

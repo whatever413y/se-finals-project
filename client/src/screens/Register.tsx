@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { handleFormFields } from "../components/FormFields";
 
 
 const defaultFormFields = {
@@ -15,6 +14,11 @@ const Register: React.FC = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { fullname, username, password } = formFields
   const navigate = useNavigate()
+
+  const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   const handleClick = () => {
     navigate('/')

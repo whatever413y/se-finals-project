@@ -3,7 +3,6 @@ import FormInput from "../components/form-input/FormInput";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import User from "../components/User";
-import { handleFormFields } from "../components/FormFields";
 
 const defaultFormFields = {
   username: "",
@@ -15,6 +14,11 @@ const Login: React.FC = () => {
   const { username, password } = formFields;
   const [user, setUser] = useState<User>();
   const navigate = useNavigate();
+
+  const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   const handleClick = () => {
     navigate("/register");
