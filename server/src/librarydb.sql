@@ -161,7 +161,7 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Hunger Games', 'Suzanne Collins', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('TCall Me By Your Name', 'Andre Aciman', 'Romance', TRUE);
+    VALUES ('Call Me By Your Name', 'Andre Aciman', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Wonderful Wizard of Oz', 'L. Frank Baum', 'Fantasy', TRUE);
 
