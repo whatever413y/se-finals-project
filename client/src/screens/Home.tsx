@@ -1,11 +1,9 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
 import { useLocation } from "react-router-dom";
 import User from "../components/User"
 import categories from "../components/Categories";
-import { handleFormFields } from "../components/FormFields";
-import User from "../components/User"
 
 const defaultFormFields = {
   search: '',
