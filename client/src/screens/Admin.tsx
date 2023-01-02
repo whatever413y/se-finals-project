@@ -55,7 +55,7 @@ const Admin: React.FC = () => {
         <h2>Book</h2>
         <form onSubmit={handleBookAdmin}>
           <FormInput
-            label="bookTitle"
+            label="Book Title"
             type="text"
             required
             name="bookTitle"
@@ -63,7 +63,7 @@ const Admin: React.FC = () => {
             onChange={handleFormFields}
           />
           <FormInput
-            label="authorName"
+            label="Author Name"
             type="text"
             required
             name="authorName"
