@@ -1,10 +1,11 @@
 import React, { useState, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
-import Axios from 'axios';
+import Axios from 'axios'
 import { useLocation } from "react-router-dom";
 import User from "../components/User"
 import categories from "../components/Categories";
 import { handleFormFields } from "../components/FormFields";
+import User from "../components/User"
 
 const defaultFormFields = {
   search: '',
@@ -24,6 +25,11 @@ const Home: React.FC = () => {
   const user: User = location.state.user
   const [results, setResults] = useState([defaultResults])
 
+  const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+    setFormFields({...formFields, [name]: value })
+  }
+
   const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const input = { search: search }
@@ -42,19 +48,19 @@ const Home: React.FC = () => {
   const addToInventory = async (book: string) => {
     const input = { book: book, id: user.id }
     await Axios.post('http://localhost:3000/inventory/add', input)
-      .then((response) => {
-        // backend needs to return a callbock for confirmation
-        // alert("Added Successfully")
-      })
+    .then((response) => {
+      // backend needs to return a callbock for confirmation
+      // alert("Added Successfully")
+    })
   }
 
   const removeFromInventory = async (book: string) => {
-    const input = { book: book }
+    const input = { book: book}
     await Axios.post('http://localhost:3000/inventory/delete', input)
-      .then((response) => {
-        // backend needs to return a callbock for confirmation
-        // alert("Removed Successfully")
-      })
+    .then((response) => {
+      // backend needs to return a callbock for confirmation
+      // alert("Removed Successfully")
+    })
   }
 
   const handleInventory = async () => {
