@@ -91,23 +91,8 @@ const Home: React.FC = () => {
                 <button type="button" onClick={handleInventory}>Open Inventory</button>
               </span>
             </div>
-            <form onSubmit={handleSearch}>
-              <FormInput
-                label="Search"
-                type="text"
-                required
-                name="search"
-                value={search}
-                onChange={handleFormFields}
-              />
-              <div className="button-group">
-                <button type="submit">Search</button>
-                <span>
-                  <button type="button" onClick={handleInventory}>Open Inventory</button>
-                </span>
-              </div>
-            </form>
-            <div>
+          </form>
+          <div>
               <h2>Results</h2>
               <table className="table is-striped is-fullwidth">
                 <thead>
@@ -118,7 +103,7 @@ const Home: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {results.map((book, index) => (
+                  {results.map((book) => (
                     <tr key={book.id}>
                       <td>{book.bookTitle}</td>
                       <td>{book.authorName}</td>
@@ -137,7 +122,6 @@ const Home: React.FC = () => {
                 </tbody>
               </table>
             </div>
-          </form>
         </div>
       </div>
     </div>

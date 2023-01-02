@@ -11,7 +11,6 @@ class UserRepository {
     
         db.query(sqlInsertUser, (error) => {
             if (error) return callback("fail")
-            return callback("success")
         })
     }
 
