@@ -47,9 +47,6 @@ const Admin: React.FC = () => {
             onChange={handleFormFields} />
           <div className="button-group">
             <button type="submit">Delete</button>
-            <span>
-              <button type="button">Cancel</button>
-            </span>
           </div>
         </form>
       </div>
@@ -74,9 +71,8 @@ const Admin: React.FC = () => {
             onChange={handleFormFields}
           />
           <div className="button-group">
-            <button type="button">Add</button>
-            <button type="button">Delete</button>
-            <button type="button">Cancel</button>
+            <button type="submit">Add</button>
+            <button type="submit">Delete</button>
           </div>
         </form>
       </div>
