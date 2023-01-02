@@ -4,10 +4,10 @@ import FormInputs from "../models/FormInputs";
 class BookRepository {
 
     public addBook = (input: FormInputs) => {
-        const { bookTitle, author, genre }: FormInputs = input;
+        const { bookTitle, authorName, genre }: FormInputs = input;
         const sqlInsertBook = 
         `INSERT INTO librarydb.book (bookTitle, authorName, genre, isAvailable) 
-        VALUES ('${bookTitle}', '${author}', '${genre}', TRUE);`
+        VALUES ('${bookTitle}', '${authorName}', '${genre}', TRUE);`
         
         db.query(sqlInsertBook)
     }
@@ -16,7 +16,9 @@ class BookRepository {
         const { bookTitle }: FormInputs = input;
         const sqlDeleteBook = `DELETE FROM book WHERE bookTitle='${bookTitle}';`
     
-        db.query(sqlDeleteBook)
+        db.query(sqlDeleteBook, (error) => {
+            if(error) console.log(error)
+        });
     }
 }
 

@@ -23,13 +23,11 @@ class InventoryRepository {
         const sqlAdd = 
         `INSERT INTO inventory (user_id, bookTitle) 
         VALUES ('${id}', '${bookTitle}');`
-        try {
-            db.query(sqlAdd)
+            db.query(sqlAdd, (error) => {
+                if (error) console.log('Already in inventory')
+            })
             db.query(this.sqlUpdateInventory(bookTitle))
             db.query(this.sqlUpdateBook(bookTitle))
-        } catch (error) {
-            throw error
-        }
     }
 
     private sqlUpdateBookNull = (bookTitle: FormInputs): string => {
@@ -54,7 +52,9 @@ class InventoryRepository {
 
     public fetchInventory = (id: FormInputs, callback: Function) => {
         const sqlQuery = 
-        `SELECT bookTitle from inventory WHERE user_id='${id}'`
+        `SELECT book.id, book.bookTitle, book.authorName, book.isAvailable FROM book 
+        INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
+        WHERE inventory.user_id='${id}';`
         try {
             db.query(sqlQuery, (error, result) => {
                 const res: string = JSON.stringify(result)

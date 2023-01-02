@@ -4,7 +4,7 @@ interface FormInputs {
     username: string,
     password: string,
     bookTitle: string,
-    author: string,
+    authorName: string,
     genre: string,
     isAvailable: boolean,
     search: string,

@@ -4,9 +4,11 @@ import { userRepo } from "../repositories/UserRepository";
 
 class UserService {
 
-    public createUser = (input: FormInputs) => {
+    public createUser = (input: FormInputs, callback: Function) => {
         try {
-            userRepo.addUser(input)
+            userRepo.addUser(input, (result: string) => {
+                return callback(result)
+            })
         } catch (error) {
             throw error;
         }
@@ -20,9 +22,9 @@ class UserService {
         }
     }
 
-    public deleteUser = (id: FormInputs) => {
+    public deleteUser = (input: FormInputs) => {
         try {
-            userRepo.deleteUser(id)
+            userRepo.deleteUser(input)
         } catch (error) {
             throw error;
         }

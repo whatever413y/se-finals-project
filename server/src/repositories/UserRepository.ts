@@ -3,13 +3,15 @@ import FormInputs from "../models/FormInputs";
 
 class UserRepository {
     
-    public addUser = (input: FormInputs) => {
+    public addUser = (input: FormInputs, callback: Function) => {
         const { username, password, fullname }: FormInputs = input;
         const sqlInsertUser = 
         `INSERT INTO user (username, password, fullname, role) 
         VALUES ('${username}', '${password}', '${fullname}',  'user');`
     
-        db.query(sqlInsertUser)
+        db.query(sqlInsertUser, (error) => {
+            if (error) return callback("fail")
+        })
     }
 
     public updateUserInfo = (input: FormInputs, id: FormInputs) => {
@@ -21,10 +23,13 @@ class UserRepository {
         db.query(sqlUpdate)
     }
 
-    public deleteUser = (id: FormInputs) => {
-        const sqlDeleteUser = `DELETE FROM user WHERE id='${id}';`
+    public deleteUser = (input: FormInputs) => {
+        const { id, username }: FormInputs = input;
+        const sqlDeleteUser = `DELETE FROM user WHERE id='${id}' OR username='${username}';`
         
-        db.query(sqlDeleteUser)
+        db.query(sqlDeleteUser, (error) => {
+            if(error) console.log(error)
+        })
     }
 
     public handleUserLogin = (input: FormInputs, callback: Function) => {
