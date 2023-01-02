@@ -7,12 +7,13 @@ const defaultFormFields = {
   username: '',
   bookTitle: '',
   authorName: '',
-  genre: ''
+  genre: '',
+  book: ''
 }
 
 const Admin: React.FC = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
-  const { userId, username, bookTitle, authorName, genre } = formFields
+  const { userId, username, bookTitle, authorName, genre, book } = formFields
 
   const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -40,7 +41,7 @@ const Admin: React.FC = () => {
 
   const handleBookDelete = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const input = { id: userId }
+    const input = { bookTitle: book }
     await Axios.post('http://localhost:3000/book/delete', input).then((response) => {
       // response here
       //  alert("Add Successfully")
@@ -60,6 +61,13 @@ const Admin: React.FC = () => {
             required
             name="userId"
             value={userId}
+            onChange={handleFormFields} />
+            <FormInput
+            label="Username"
+            type="text"
+            required
+            name="username"
+            value={username}
             onChange={handleFormFields} />
           <div className="button-group">
             <button type="submit">Delete</button>
@@ -103,8 +111,8 @@ const Admin: React.FC = () => {
             label="Book Title"
             type="text"
             required
-            name="bookTitle"
-            value={bookTitle}
+            name="book"
+            value={book}
             onChange={handleFormFields}
           />
           <div className="button-group">
