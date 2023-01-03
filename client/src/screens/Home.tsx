@@ -15,6 +15,11 @@ const defaultResults = {
   authorName: '',
   isAvailable: false
 }
+const defaultInventory = {
+  id: 0,
+  bookTitle: '',
+  authorName: ''
+}
 
 const Home: React.FC = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
@@ -22,6 +27,7 @@ const Home: React.FC = () => {
   const location = useLocation()
   const user: User = location.state.user
   const [results, setResults] = useState([defaultResults])
+  const [inventory, setInventory] = useState([defaultInventory])
 
   const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -64,13 +70,49 @@ const Home: React.FC = () => {
   const handleInventory = async () => {
     const input = { id: user.id }
     await Axios.post('http://localhost:3000/inventory/fetch', input).then((response) => {
-      setResults(response.data)
+      setInventory(response.data)
+    })
+  }
+
+  const handleBorrow = async () => {
+    const input = { id: user.id }
+    await Axios.post('http://localhost:3000/borrow/', input).then((response) => {
+      if (response.data === "success")
+      alert('Borrowed Successfully')
     })
   }
 
   return (
     <div>
       <div className='App-header'>
+      <div className="card">
+        <span>
+          <button type="button" onClick={handleInventory}>Open Inventory</button>
+        </span>
+        <span>
+          <button type="button" onClick={handleBorrow}>Borrow</button>
+        </span>
+      <h2>Inventory</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Book</th>
+            <th>Author</th>
+          </tr>
+          </thead>
+            <tbody>
+              {inventory.map((book) => (
+              <tr key={book.id}>
+                <td>{book.bookTitle}</td>
+                <td>{book.authorName}</td>
+                <td>
+                  <button onClick={() => removeFromInventory(book.bookTitle)
+                    .then(handleInventory)}>Remove</button>
+                </td>
+              </tr>))}
+            </tbody>
+      </table>
+      </div>
         <div className="card">
           <h2>Category Search</h2>
           {categories.map((category, index) => {
@@ -87,14 +129,11 @@ const Home: React.FC = () => {
             />
             <div className="button-group">
               <button type="submit">Search</button>
-              <span>
-                <button type="button" onClick={handleInventory}>Open Inventory</button>
-              </span>
             </div>
           </form>
           <div>
               <h2>Results</h2>
-              <table className="table is-striped is-fullwidth">
+              <table>
                 <thead>
                   <tr>
                     <th>Book</th>
