@@ -69,6 +69,8 @@ INSERT INTO user (username, password, fullname, role)
 VALUES ('testusername', 'testpassword', 'testname', 'user');
 
 /* BOOKS */
+
+/*Fantasy*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Game of Thrones', 'George R. R. Martin', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -125,7 +127,20 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Silmarillion', 'J.R.R. Tolkien', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Children of Hurin', 'J.R.R. Tolkien', 'Fantasy', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ("Alice's Adventures in Wonderland", 'Lewis Carroll', 'Fantasy', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Tale of Peter Rabbit', 'Beatrix Potter', 'Fantasy', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Coraline', 'Neil Gaiman', 'Fantasy', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Attack on Titan', 'Hajime Isayama', 'Fantasy', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Wonderful Wizard of Oz', 'L. Frank Baum', 'Fantasy', TRUE);
 
+/*Mystery*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Murder on the Orient Express', 'Agatha Christie', 'Mystery', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -157,6 +172,7 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Cloud of Unknowing', 'Dorothy L. Sayers', 'Mystery', TRUE);
 
+/*Adventure*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Treasure Island', 'Robert Louis Stevenson', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -207,7 +223,18 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Adventures of Tintin: The Secret of the Unicorn', 'Hergé', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Adventures of Tintin: The Seven Crystal Balls', 'Hergé', 'Adventure', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Life of Pi', 'Yann Martel', 'Adventure', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Hobbit', 'J. R. R. Tolkien', 'Adventure', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Mysterious Island', 'Jules Verne', 'Adventure', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('DA VINCI CODE', 'Dan Brown', 'Adventure', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Hunger Games', 'Suzanne Collins', 'Adventure', TRUE);
 
+/*Science Fiction*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Maze Runner', 'James Dashner', 'Science Fiction', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -218,16 +245,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Maze Runner: The Kill Order', 'James Dashner', 'Science Fiction', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Maze Runner: The Fever Code', 'James Dashner', 'Science Fiction', TRUE);
-
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Forrest Gump', 'winston groo', 'Romantic', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Haunting of Hill House', 'Shirley Jackson', 'Horror', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Me Before You', 'Jojo Moyes', 'Romance', TRUE);
-
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Hunger Games', 'Suzanne Collins', 'Science Fiction', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
@@ -239,18 +256,9 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Lost World', 'Arthur Conan Doyle', 'Science fiction', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ("Alice's Adventures in Wonderland", 'Lewis Carroll', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Tale of Peter Rabbit', 'Beatrix Potter', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Coraline', 'Neil Gaiman', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Hell House', 'Richard Matheson,', 'Horror', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Pride and Prejudice', 'Jane Austen', 'Romance', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Life of Pi', 'Yann Martel', 'Adventure', TRUE);
+    VALUES ('Something Phenomenal;', 'April Avery', 'Science Fiction', TRUE);
 
+/*Horror*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Shining', 'Stephen King', 'Horror', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -265,26 +273,16 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Gunslinger', 'Stephen King', 'Horror', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Misery', 'Stephen King', 'Horror', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Haunting of Hill House', 'Shirley Jackson', 'Horror', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Hell House', 'Richard Matheson,', 'Horror', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Exorcist', 'William Peter Blatty', 'Horror', TRUE);
 
-
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Harry Potter and The Sorcerers Stone', 'J. K. Rowling', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Harry Potter and The Prisoner of Azkaban', 'J. K. Rowling', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Harry Potter and The Goblet of Fire', 'J. K. Rowling', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Harry Potter and The Order of Phoenix', 'J. K. Rowling', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Harry Potter and The Half-Blood Prince', 'J. K. Rowling', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Harry Potter and The Deathly Hallows', 'J. K. Rowling', 'Fantasy', TRUE);
+/*Romance*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Broken Souls Plea', 'CeCeLib', 'Romance', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Broken Mans Affliction', 'CeCeLib', 'Romance', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Something Phenomenal;', 'April Avery', 'Fiction', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Broken Mans Affliction', 'CeCeLib', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
@@ -295,26 +293,18 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Avenues of the Diamond', 'Gwy Saludes', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Safe Skies, Archer', 'Gwy Saludes', 'Romance', TRUE);
-
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Hobbit', 'J. R. R. Tolkien', 'Adventure', TRUE);
+    VALUES ('Forrest Gump', 'winston groo', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Mysterious Island', 'Jules Verne', 'Adventure', TRUE);
+    VALUES ('Me Before You', 'Jojo Moyes', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('DA VINCI CODE', 'Dan Brown', 'Adventure', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Attack on Titan', 'Hajime Isayama', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Exorcist', 'William Peter Blatty', 'Horror', TRUE);
+    VALUES ('Pride and Prejudice', 'Jane Austen', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('To All the Boys Ive Loved Before', 'Jenny Han', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Hunger Games', 'Suzanne Collins', 'Adventure', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Call Me By Your Name', 'Andre Aciman', 'Romance', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Wonderful Wizard of Oz', 'L. Frank Baum', 'Fantasy', TRUE);
 
+/*Novel*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Pride and Prejudice', 'Jane Austen', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -376,6 +366,7 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Invisible Man', 'H.G. Wells', 'Novel');
 
+/*Mythology*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Iliad', 'Homer', 'Mythology', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
