@@ -69,7 +69,6 @@ INSERT INTO user (username, password, fullname, role)
 VALUES ('testusername', 'testpassword', 'testname', 'user');
 
 /* BOOKS */
-
 /*Fantasy*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Game of Thrones', 'George R. R. Martin', 'Fantasy', TRUE);
@@ -231,8 +230,7 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Mysterious Island', 'Jules Verne', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('DA VINCI CODE', 'Dan Brown', 'Adventure', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('The Hunger Games', 'Suzanne Collins', 'Adventure', TRUE);
+
 
 /*Science Fiction*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -279,6 +277,8 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Hell House', 'Richard Matheson,', 'Horror', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Exorcist', 'William Peter Blatty', 'Horror', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Hunger', 'Alma Katsu', 'Horror', TRUE);
 
 /*Romance*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
@@ -289,6 +289,8 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Safe Skies, Archer', 'Gwy Saludes', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Golden Scenery of Tomorrow', 'Gwy Saludes', 'Romance', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Maybe Someday', 'Colleen Hoover', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Avenues of the Diamond', 'Gwy Saludes', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
@@ -303,6 +305,16 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('To All the Boys Ive Loved Before', 'Jenny Han', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Call Me By Your Name', 'Andre Aciman', 'Romance', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Fifty Shades', 'E. L. James', 'Romance', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Fifty Shades Darker', 'E. L. James', 'Romance', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Fifty Shades Freed', 'E. L. James', 'Romance', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('Before I Let Go', 'Kennedy Ryan', 'Romance', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('It Ends with Us', 'Colleen Hoover', 'Romance', TRUE);
 
 /*Novel*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
