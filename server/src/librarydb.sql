@@ -279,6 +279,8 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Exorcist', 'William Peter Blatty', 'Horror', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('The Hunger', 'Alma Katsu', 'Horror', TRUE);
+INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
+    VALUES ('The Other', 'Tom Tyron', 'Horror', TRUE);
 
 /*Romance*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
