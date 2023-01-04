@@ -12,4 +12,9 @@ pipeline {
             }
         }
     }
+    stage('Run') {
+            steps {
+                sh 'npm run docker'
+        }
+    }
 }
