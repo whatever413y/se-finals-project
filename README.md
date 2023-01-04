@@ -1,9 +1,7 @@
 # se-finals-project
  
-Example project for the react and node with typescript
- 
 `npm install` to install dependencies
 
-docker pull patchespatch/se-project-finals-app:latest
+`npm run docker` to build image and run container
 
 http://localhost:3000/index.html
