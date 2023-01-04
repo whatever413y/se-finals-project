@@ -7,9 +7,7 @@ interface FormInputs {
     authorName: string,
     genre: string,
     isAvailable: boolean,
-    search: string,
-    borrowDate: Date,
-    returnDate: Date
+    search: string
 }
 
 export default FormInputs;

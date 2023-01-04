@@ -11,10 +11,10 @@ class InventoryRepository {
         return sqlUpdateInventory
     }
 
-    private sqlUpdateBook = (bookTitle: FormInputs): string => {
+    private sqlUpdateBook = (bookTitle: FormInputs, id: FormInputs): string => {
         const sqlUpdateBook = 
         `UPDATE book INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
-        SET book.user_id=inventory.id 
+        SET book.user_id=${id} 
         WHERE inventory.bookTitle='${bookTitle}';`
         return sqlUpdateBook
     }
@@ -27,7 +27,7 @@ class InventoryRepository {
                 if (error) console.log('Already in inventory')
             })
             db.query(this.sqlUpdateInventory(bookTitle))
-            db.query(this.sqlUpdateBook(bookTitle))
+            db.query(this.sqlUpdateBook(bookTitle, id))
     }
 
     private sqlUpdateBookNull = (bookTitle: FormInputs): string => {
@@ -52,7 +52,7 @@ class InventoryRepository {
 
     public fetchInventory = (id: FormInputs, callback: Function) => {
         const sqlQuery = 
-        `SELECT book.id, book.bookTitle, book.authorName, book.isAvailable FROM book 
+        `SELECT book.id, book.bookTitle, book.authorName FROM book 
         INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
         WHERE inventory.user_id='${id}';`
         try {

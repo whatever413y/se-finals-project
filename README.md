@@ -4,8 +4,6 @@ Example project for the react and node with typescript
  
 `npm install` to install dependencies
 
-`npm run build:dev` 
-
-`npm run start:dev` 
+docker pull patchespatch/se-project-finals-app:latest
 
 http://localhost:3000/index.html
