@@ -9,7 +9,9 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'npm install' 
-                sh 'npm run docker'
+                sh 'npm run compile'
+                sh 'npm run build'
+                sh 'npm run start'
             }
         }
     }
