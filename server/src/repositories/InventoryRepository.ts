@@ -3,7 +3,7 @@ import FormInputs from "../models/FormInputs";
 
 class InventoryRepository {
 
-    private sqlUpdateInventory = (bookTitle: FormInputs): string => {
+    private sqlUpdateInventory = (bookTitle: string): string => {
         const sqlUpdateInventory = 
         `UPDATE inventory INNER JOIN book ON inventory.bookTitle=book.bookTitle 
         SET inventory.book_id=book.id 
@@ -11,7 +11,7 @@ class InventoryRepository {
         return sqlUpdateInventory
     }
 
-    private sqlUpdateBook = (bookTitle: FormInputs, id: FormInputs): string => {
+    private sqlUpdateBook = (bookTitle: string, id: number): string => {
         const sqlUpdateBook = 
         `UPDATE book INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
         SET book.user_id=${id} 
@@ -19,7 +19,8 @@ class InventoryRepository {
         return sqlUpdateBook
     }
 
-    public addBook = (bookTitle: FormInputs, id: FormInputs) => {
+    public addBook = (input: FormInputs) => {
+        const { id, bookTitle }: FormInputs = input
         const sqlAdd = 
         `INSERT INTO inventory (user_id, bookTitle) 
         VALUES ('${id}', '${bookTitle}');`
@@ -30,7 +31,7 @@ class InventoryRepository {
             db.query(this.sqlUpdateBook(bookTitle, id))
     }
 
-    private sqlUpdateBookNull = (bookTitle: FormInputs): string => {
+    private sqlUpdateBookNull = (bookTitle: string): string => {
         const sqlUpdateBookNull = 
         `UPDATE book INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 
         SET book.user_id=NULL 
@@ -38,7 +39,8 @@ class InventoryRepository {
         return sqlUpdateBookNull
     }
 
-    public removeBook = (bookTitle: FormInputs) =>{
+    public removeBook = (input: FormInputs) => {
+        const { bookTitle }: FormInputs = input
         const sqlRemove = 
         `DELETE FROM inventory 
         WHERE bookTitle='${bookTitle}';`
@@ -50,7 +52,8 @@ class InventoryRepository {
         }
     }
 
-    public fetchInventory = (id: FormInputs, callback: Function) => {
+    public fetchInventory = (input: FormInputs, callback: Function) => {
+        const { id }: FormInputs = input
         const sqlQuery = 
         `SELECT book.id, book.bookTitle, book.authorName FROM book 
         INNER JOIN inventory ON book.bookTitle=inventory.bookTitle 

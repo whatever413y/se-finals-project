@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import User from "../components/User"
 import categories from "../components/Categories";
 
@@ -24,6 +24,7 @@ const defaultInventory = {
 const Home: React.FC = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { search } = formFields
+  const navigate = useNavigate()
   const location = useLocation()
   const user: User = location.state.user
   const [results, setResults] = useState([defaultResults])
@@ -50,7 +51,7 @@ const Home: React.FC = () => {
   }
 
   const addToInventory = async (book: string) => {
-    const input = { book: book, id: user.id }
+    const input = { bookTitle: book, id: user.id }
     await Axios.post('http://localhost:3000/inventory/add', input)
     .then((response) => {
       if(response.data === "error") {
@@ -62,7 +63,7 @@ const Home: React.FC = () => {
   }
 
   const removeFromInventory = async (book: string) => {
-    const input = { book: book}
+    const input = { bookTitle: book}
     await Axios.post('http://localhost:3000/inventory/delete', input)
     .then((response) => {
       if(response.data === "error"){
@@ -86,16 +87,20 @@ const Home: React.FC = () => {
     })
   }
 
+  const handleUserSettings = () => {
+    navigate('/user', {state: {user: user}})
+  }
+
   return (
     <div>
       <div className='App-header'>
+      <button type="button" onClick={handleUserSettings}>Go to User Settings</button>
       <div className="card">
         <span>
           <button type="button" onClick={handleInventory}>Open Inventory</button>
-        </span>
-        <span>
           <button type="button" onClick={handleBorrow}>Borrow</button>
         </span>
+      <div>
       <h2>Inventory</h2>
       <table>
         <thead>
@@ -116,6 +121,7 @@ const Home: React.FC = () => {
               </tr>))}
             </tbody>
       </table>
+      </div>
       </div>
         <div className="card">
           <h2>Category Search</h2>
@@ -154,11 +160,6 @@ const Home: React.FC = () => {
                       <td>
                         <button onClick={() => addToInventory(book.bookTitle)}>
                           Add</button>
-                      </td>
-                      <td>
-                        <button onClick={() => removeFromInventory(book.bookTitle)
-                          .then(handleInventory)}>
-                          Remove</button>
                       </td>
                     </tr>
                   ))}

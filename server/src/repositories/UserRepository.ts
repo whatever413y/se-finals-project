@@ -14,8 +14,8 @@ class UserRepository {
         })
     }
 
-    public updateUserInfo = (input: FormInputs, id: FormInputs) => {
-        const { fullname, username, password }: FormInputs = input;
+    public updateUserInfo = (input: FormInputs) => {
+        const { fullname, username, password, id }: FormInputs = input;
         const sqlUpdate = 
         `UPDATE user SET username='${username}', password='${password}', fullname='${fullname}' 
         WHERE id='${id}';`

@@ -14,9 +14,9 @@ class UserService {
         }
     }
 
-    public updateUser = (input: FormInputs, id: FormInputs) => {
+    public updateUser = (input: FormInputs) => {
         try {
-            userRepo.updateUserInfo(input, id)
+            userRepo.updateUserInfo(input)
         } catch (error) {
             throw error;
         }

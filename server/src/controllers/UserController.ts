@@ -21,8 +21,7 @@ class UserController {
     public updateUser = async (req: Request, res: Response) => {
         try {
             const input: FormInputs = req.body;
-            const id: FormInputs = req.body.id;
-            userService.updateUser(input, id)
+            userService.updateUser(input)
             return res.json("success")
         } catch (error) {
             throw error;

@@ -4,24 +4,17 @@ import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register"
 import Admin from "./screens/Admin";
+import User from "./screens/User";
 
 const App: React.FC = () => {
   return (
     <Router basename="/index.html">
-      <div>
-        <ul>
-          <li><Link to="/">Login</Link></li>
-          <li><Link to="/register">Register</Link></li>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/admin">Admin</Link></li>
-        </ul>
-      </div>
-  
         <Routes>
           <Route path="/" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/admin" element={<Admin/>}/>
+          <Route path="/user" element={<User/>}/>
         </Routes>
       </Router>
   );

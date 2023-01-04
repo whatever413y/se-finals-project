@@ -3,25 +3,25 @@ import { inventoryRepo } from "../repositories/InventoryRepository";
 
 class InventoryService {
 
-    public addBook = (bookTitle: FormInputs, id: FormInputs) => {
+    public addBook = (input: FormInputs) => {
         try {
-            inventoryRepo.addBook(bookTitle, id)
+            inventoryRepo.addBook(input)
         } catch (error) {
             throw error;
         }
     }
 
-    public removeBook = (bookTitle: FormInputs) => {
+    public removeBook = (input: FormInputs) => {
         try {
-            inventoryRepo.removeBook(bookTitle)
+            inventoryRepo.removeBook(input)
         } catch (error) {
             throw error;
         }
     }
 
-    public fetchInventory = (id: FormInputs, callback: Function) => {
+    public fetchInventory = (input: FormInputs, callback: Function) => {
         try {
-            inventoryRepo.fetchInventory(id, (result: string) => {
+            inventoryRepo.fetchInventory(input, (result: string) => {
                 return callback(result)
             })
         } catch (error) {

@@ -6,9 +6,8 @@ class InventoryController {
 
     public addBook = async (req: Request, res: Response) => {
         try {
-            const input: FormInputs = req.body.book;
-            const id: FormInputs = req.body.id
-            inventoryService.addBook(input, id)
+            const input: FormInputs = req.body;
+            inventoryService.addBook(input)
             return res.json("success")
         } catch (error) {
             throw error;
@@ -17,7 +16,7 @@ class InventoryController {
 
     public removeBook = async (req: Request, res: Response) => {
         try {
-            const input: FormInputs = req.body.book;
+            const input: FormInputs = req.body;
             inventoryService.removeBook(input)
             return res.json("success")
         } catch (error) {
@@ -27,8 +26,8 @@ class InventoryController {
 
     public fetchInventory = async (req: Request, res: Response) => {
         try {
-            const id: FormInputs = req.body.id
-            inventoryService.fetchInventory(id, (result: string) => {
+            const input: FormInputs = req.body
+            inventoryService.fetchInventory(input, (result: string) => {
                 const results: [] = JSON.parse(result)
                 return res.json(results)
             })
