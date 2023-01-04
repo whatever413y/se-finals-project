@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id`INT DEFAULT NULL,
-  `bookTitle` VARCHAR(45) NOT NULL,
+  `bookTitle` VARCHAR(100) NOT NULL,
   `authorName` VARCHAR(45) NOT NULL,
   `genre` VARCHAR(45) NOT NULL,
   `isAvailable` BOOLEAN NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `inventory` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `book_id` INT DEFAULT NULL,
-  `bookTitle` VARCHAR(45) NOT NULL,
+  `bookTitle` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `bookTitle_UNIQUE` (`bookTitle` ASC) VISIBLE,
   CONSTRAINT `fk_user` FOREIGN KEY (`user_id`)  
