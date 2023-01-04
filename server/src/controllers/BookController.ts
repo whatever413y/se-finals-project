@@ -6,8 +6,9 @@ class BookController {
     createBook = async (req: Request, res: Response) => {
         try {
             const input: FormInputs = req.body;
-            bookService.createBook(input)
-            return res.json("success")
+            bookService.createBook(input, (result: string) => {
+            return res.json(result)
+        })
         } catch (error) {
             throw error;
         }
@@ -16,8 +17,9 @@ class BookController {
     deleteBook = async (req: Request, res: Response) => {
         try {
             const input: FormInputs = req.body;
-            bookService.deleteBook(input)
-            return res.json("success")
+            bookService.deleteBook(input, (result: string) => {
+                return res.json(result)
+            })
         } catch (error) {
             throw error;
         }

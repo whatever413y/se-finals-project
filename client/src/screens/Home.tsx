@@ -53,8 +53,11 @@ const Home: React.FC = () => {
     const input = { book: book, id: user.id }
     await Axios.post('http://localhost:3000/inventory/add', input)
     .then((response) => {
-      // backend needs to return a callbock for confirmation
-      // alert("Added Successfully")
+      if(response.data === "error") {
+        alert("This book is unavailable right now.")
+      } else {
+        alert('The book is added to your inventory.')
+      }
     })
   }
 
@@ -62,8 +65,9 @@ const Home: React.FC = () => {
     const input = { book: book}
     await Axios.post('http://localhost:3000/inventory/delete', input)
     .then((response) => {
-      // backend needs to return a callbock for confirmation
-      // alert("Removed Successfully")
+      if(response.data === "error"){
+        alert("The book is now removed from inventory")
+      }
     })
   }
 

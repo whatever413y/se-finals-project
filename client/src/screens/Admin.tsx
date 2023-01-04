@@ -25,8 +25,11 @@ const Admin: React.FC = () => {
     event.preventDefault()
     const input = { userId: userId, username: username }
     await Axios.post('http://localhost:3000/user/delete', input).then((response) => {
-      // response here
-      // alert("Delete Successfully")
+      if(response.data === "error") {
+        alert("The attempt to delete this account has failed.")
+      } else {
+        alert('The account is now deleted.')
+      }
     })
   };
 
@@ -34,8 +37,11 @@ const Admin: React.FC = () => {
     event.preventDefault()
     const input = { bookTitle: bookTitle, authorName: authorName, genre: genre }
     await Axios.post('http://localhost:3000/book/add', input).then((response) => {
-      // response here
-      //  alert("Add Successfully")
+      if(response.data === "error") {
+        alert("The attempt to add a book has failed.")
+      } else {
+        alert('The book is now added.')
+      }
     })
   };
 
@@ -43,8 +49,11 @@ const Admin: React.FC = () => {
     event.preventDefault()
     const input = { bookTitle: book }
     await Axios.post('http://localhost:3000/book/delete', input).then((response) => {
-      // response here
-      //  alert("Add Successfully")
+      if(response.data === "error") {
+        alert("The attempt to delete the book has failed.")
+      } else {
+        alert('The book is now deleted.')
+      }
     })
   };
 

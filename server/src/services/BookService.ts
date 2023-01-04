@@ -3,17 +3,21 @@ import { bookRepo } from "../repositories/BookRepository";
 
 class BookService {
 
-    public createBook = (input: FormInputs) => {
+    public createBook = (input: FormInputs, callback: Function) => {
         try {
-            bookRepo.addBook(input)
+            bookRepo.addBook(input, (result: string) => {
+                return callback(result)
+            })
         } catch (error) {
             throw error;
         }
     }
 
-    public deleteBook = (input: FormInputs) => {
+    public deleteBook = (input: FormInputs, callback: Function) => {
         try {
-            bookRepo.deleteBook(input)
+            bookRepo.deleteBook(input, (result: string) => {
+                return callback(result)
+            })
         } catch (error) {
             throw error;
         }
