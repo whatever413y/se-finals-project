@@ -6,8 +6,8 @@
   "scripts": {
     "compile": "tsc",
     "build": "webpack",
-    "start:dev": "nodemon dist/index.js",
-    "start": "concurrently \"npm run compile\" \"npm run build\" \"npm run start:dev\""
+    "start": "nodemon dist/index.js",
+    "docker": "docker-compose up --build --force-recreate"
   },
   "keywords": [],
   "author": "",
