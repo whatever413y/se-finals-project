@@ -362,23 +362,23 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('For Whom the Bell Tolls', 'Ernest Hemingway', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Old Man and the Sea', 'Ernest Hemingway', 'Novel');
+    VALUES ('The Old Man and the Sea', 'Ernest Hemingway', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Grapes of Wrath', 'John Steinbeck', 'Novel');
+    VALUES ('The Grapes of Wrath', 'John Steinbeck', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('Of Mice and Men', 'John Steinbeck', 'Novel');
+    VALUES ('Of Mice and Men', 'John Steinbeck', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Red Badge of Courage', 'Stephen Crane', 'Novel');
+    VALUES ('The Red Badge of Courage', 'Stephen Crane', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Call of the Wild', 'Jack London', 'Novel');
+    VALUES ('The Call of the Wild', 'Jack London', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Sea Wolf', 'Jack London', 'Novel');
+    VALUES ('The Sea Wolf', 'Jack London', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Time Machine', 'H.G. Wells', 'Novel');
+    VALUES ('The Time Machine', 'H.G. Wells', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The War of the Worlds', 'H.G. Wells', 'Novel');
+    VALUES ('The War of the Worlds', 'H.G. Wells', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Invisible Man', 'H.G. Wells', 'Novel');
+    VALUES ('The Invisible Man', 'H.G. Wells', 'Novel', TRUE);
 
 /*Mythology*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -390,7 +390,7 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Metamorphoses', 'Ovid', 'Mythology', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Epic of Gilgamesh', 'Anonymous', 'Mythology');
+    VALUES ('The Epic of Gilgamesh', 'Anonymous', 'Mythology', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Ramayana', 'Valmiki', 'Mythology', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
