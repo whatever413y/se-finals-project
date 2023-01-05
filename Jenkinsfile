@@ -16,11 +16,5 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Test') { 
-            steps {
-                sh 'npm run start'
-                sh 'echo http://localhost:3000/index.html'
-            }
-        }
     }
 }
