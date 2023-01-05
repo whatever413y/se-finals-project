@@ -10,7 +10,10 @@ class UserRepository {
         VALUES ('${username}', '${password}', '${fullname}',  'user');`
     
         db.query(sqlInsertUser, (error) => {
-            if (error) return callback("fail")
+            if (error) {
+                return callback("fail")
+            }
+            return callback("success")
         })
     }
 
