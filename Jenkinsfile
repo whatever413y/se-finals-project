@@ -5,17 +5,20 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    environment {
+        CI = 'true' 
+    }
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
-                sh 'npm install' 
-                sh 'npm run compile'
-                sh 'npm run build'
+                sh 'npm install'
+                sh 'npm compile'
+                sh 'npm build'
             }
         }
-        stage('Start') { 
+        stage('Test') { 
             steps {
-                sh 'npm run start'
+                sh 'npm start'
             }
         }
     }
