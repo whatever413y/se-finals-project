@@ -12,6 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm i docker-compose'
                 sh 'npm run docker'
             }
         }
