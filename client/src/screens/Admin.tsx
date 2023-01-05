@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   userId: 0,
