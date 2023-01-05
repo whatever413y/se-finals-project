@@ -19,13 +19,16 @@ class InventoryRepository {
         return sqlUpdateBook
     }
 
-    public addBook = (input: FormInputs) => {
+    public addBook = (input: FormInputs, callback: Function) => {
         const { id, bookTitle }: FormInputs = input
         const sqlAdd = 
         `INSERT INTO inventory (user_id, bookTitle) 
         VALUES ('${id}', '${bookTitle}');`
             db.query(sqlAdd, (error) => {
-                if (error) console.log('Already in inventory')
+                if (error) {
+                    return callback("fail")
+                } 
+                return callback("success")
             })
             db.query(this.sqlUpdateInventory(bookTitle))
             db.query(this.sqlUpdateBook(bookTitle, id))

@@ -18,7 +18,9 @@ class BorrowRepository {
         VALUES (${id}, '${borrowDate}', '${returnDate}');`
         try {
             db.query(this.sqlUpdate(id))
-            db.query(sqlInsert)
+            db.query(sqlInsert, (error) => {
+                console.log(error)
+            })
         } catch (error) {
             throw error;
         }

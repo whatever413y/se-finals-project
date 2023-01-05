@@ -3,9 +3,11 @@ import { inventoryRepo } from "../repositories/InventoryRepository";
 
 class InventoryService {
 
-    public addBook = (input: FormInputs) => {
+    public addBook = (input: FormInputs, callback: Function) => {
         try {
-            inventoryRepo.addBook(input)
+            inventoryRepo.addBook(input, (result: string) => {
+                return callback(result)
+            })
         } catch (error) {
             throw error;
         }

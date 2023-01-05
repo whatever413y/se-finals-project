@@ -7,8 +7,9 @@ class InventoryController {
     public addBook = async (req: Request, res: Response) => {
         try {
             const input: FormInputs = req.body;
-            inventoryService.addBook(input)
-            return res.json("success")
+            inventoryService.addBook(input, (result: string) => {
+                return res.json(result)
+            })
         } catch (error) {
             throw error;
         }

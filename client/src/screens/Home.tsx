@@ -54,8 +54,8 @@ const Home: React.FC = () => {
     const input = { bookTitle: book, id: user.id }
     await Axios.post('http://localhost:3000/inventory/add', input)
     .then((response) => {
-      if(response.data === "error") {
-        alert("This book is unavailable right now.")
+      if(response.data === "fail") {
+        alert("Book unavailable or already in inventory!")
       } else {
         alert('The book is added to your inventory.')
       }
@@ -65,11 +65,6 @@ const Home: React.FC = () => {
   const removeFromInventory = async (book: string) => {
     const input = { bookTitle: book}
     await Axios.post('http://localhost:3000/inventory/delete', input)
-    .then((response) => {
-      if(response.data === "error"){
-        alert("The book is now removed from inventory")
-      }
-    })
   }
 
   const handleInventory = async () => {

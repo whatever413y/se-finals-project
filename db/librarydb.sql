@@ -56,6 +56,7 @@ CREATE TABLE `borrow` (
   `borrowDate` DATE NOT NULL,
   `returnDate` DATE NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_inventory` FOREIGN KEY (`user_id`)  
   REFERENCES inventory(user_id) 
   ON DELETE CASCADE 
