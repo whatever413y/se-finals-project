@@ -22,8 +22,11 @@ app.use(express.urlencoded({extended: true}) as RequestHandler)
 app.use(express.json() as RequestHandler);
 
 db.connect((err) => {
-  if (err) throw err;
+  if (err) {
+    console.log(err)
+  } else {
     console.log("LibraryDB Connected!")
+  }
 })
 
 app.use(UserRoute)
