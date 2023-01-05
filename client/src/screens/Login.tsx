@@ -65,7 +65,7 @@ const Login: React.FC = () => {
           <div className="button-group">
             <button type="submit">Login</button>
             <span>
-              <button type="button" onClick={handleClick} >Register</button>
+              <button type="button" className="btn btn-primary" onClick={handleClick} >Register</button>
             </span>
           </div>
         </form>
