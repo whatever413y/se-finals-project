@@ -3,6 +3,7 @@ import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import User from "../components/User"
+import './login.css'
 
 const defaultFormFields = {
     username: '',
@@ -42,35 +43,50 @@ const Login: React.FC = () => {
     };
 
   return (
-    <div className='App-header'>
-      <div className="card">
-        <h2>Sign In</h2>
-        <form onSubmit={handleUserLogin}>
-          <FormInput
-            label="Username"
-            type="text"
-            required
-            name="username"
-            value={username}
-            onChange={handleFormFields}
-          />
-          <FormInput
-            label="Password"
-            type='password'
-            required
-            name='password'
-            value={password}
-            onChange={handleFormFields}
-          />
-          <div className="button-group">
-            <button type="submit">Login</button>
-            <span>
-              <button type="button" className="btn btn-primary" onClick={handleClick} >Register</button>
-            </span>
-          </div>
-        </form>
+  <div className="container-fluid" >
+    <div className="row g-5 justify-content-evenly">
+      <div className="col-lg-10">
+        <div className= "card">
+          <div className="row g-0">
+            <div className="col-9">
+              <div className='App-header'>
+                <div className="card">
+                  <div className="sign-in">
+                  <h2>Sign In</h2>
+                  <form onSubmit={handleUserLogin}>
+                    <FormInput
+                          placeholder="Username"
+                          type="text"
+                          required
+                          name="username"
+                          value={username}
+                          onChange={handleFormFields} label={""}                    />
+                    <FormInput
+                          placeholder="Password"
+                          type='password'
+                          required
+                          name='password'
+                          value={password}
+                          onChange={handleFormFields} label={""}                    />
+                    <div className="button-group">
+                      <button type="submit">Logi.n</button>
+                      <span>
+                        <button type="button" className="btn btn-primary" onClick={handleClick} >Register</button>
+                      </span>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-3">
+              <img src="" className="card-img img-fluid"/>
+            </div>
+         </div>
+        </div>
       </div>
     </div>
+  </div>
   );
 };
 
