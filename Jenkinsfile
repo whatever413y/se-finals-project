@@ -12,12 +12,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-                sh 'npm i docker-compose'
-                sh 'npm run docker'
+                sh 'npm run compile'
+                sh 'npm run build'
             }
         }
         stage('Test') { 
             steps {
+                sh 'npm run start'
                 sh 'echo http://localhost:3000/index.html'
             }
         }
