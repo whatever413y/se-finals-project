@@ -4,7 +4,14 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'docker-compose up' 
+                sh 'npm install' 
+                sh 'npm run compile'
+                sh 'npm run build'
+            }
+        }
+        stage('Start') { 
+            steps {
+                sh 'npm run start'
             }
         }
     }
