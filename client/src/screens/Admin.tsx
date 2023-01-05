@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import FormInput from "../components/form-input/FormInput";
 import Axios from 'axios'
+import { useLocation, useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   userId: 0,
@@ -14,12 +15,12 @@ const defaultFormFields = {
 const Admin: React.FC = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { userId, username, bookTitle, authorName, genre, book } = formFields
+  const navigate = useNavigate()
 
   const handleFormFields = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
-  
 
   const handleUserDelete = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -56,6 +57,12 @@ const Admin: React.FC = () => {
       }
     })
   };
+
+  const handleLogout = () => {
+    if(confirm("Confirm Logout?") == true) {
+        navigate('/')
+    }
+}
 
   return (
     <div className='App-header'>
@@ -128,6 +135,7 @@ const Admin: React.FC = () => {
             <button type="submit">Delete</button>
           </div>
         </form>
+        <button type="button" onClick={handleLogout} >Logout</button>
        </div>
       </div>  
     </div>
