@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh echo http://localhost:3000/index.html
+                sh 'echo http://localhost:3000/index.html'
             }
         }
     }
