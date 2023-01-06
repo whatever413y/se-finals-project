@@ -67,6 +67,7 @@ const Admin: React.FC = () => {
   return (
     <div className='App-header'>
       <button type="button" onClick={handleLogout} >Logout</button>
+      <br></br>
       <div className='card'>
         <div>
           <h2>Delete a User Account</h2>
