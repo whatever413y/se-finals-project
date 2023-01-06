@@ -10,7 +10,10 @@ class BookRepository {
         VALUES ('${bookTitle}', '${authorName}', '${genre}', TRUE);`
         
         db.query(sqlInsertBook, (error) => {
-            if (error) return callback("error")
+            if (error) {
+                return callback("fail")
+            }
+            return callback("success")
         })
     
     }
@@ -19,8 +22,10 @@ class BookRepository {
         const { bookTitle }: FormInputs = input;
         const sqlDeleteBook = `DELETE FROM book WHERE bookTitle='${bookTitle}';`
     
-        db.query(sqlDeleteBook, (error) => {
-            if(error) return callback("error")
+        db.query(sqlDeleteBook, (error, result) => {
+            console.log(result)
+            const res = JSON.stringify(result)
+            return callback(res)
         });
     }
 }

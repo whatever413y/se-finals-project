@@ -24,10 +24,10 @@ const Admin: React.FC = () => {
 
   const handleUserDelete = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const input = { userId: userId, username: username }
+    const input = { id: userId, username: username }
     await Axios.post('http://localhost:3000/user/delete', input).then((response) => {
-      if (response.data === "error") {
-        alert("The attempt to delete this account has failed.")
+      if (response.data === "fail") {
+        alert("No account found to delete.")
       } else {
         alert('The account is now deleted.')
       }
@@ -38,7 +38,7 @@ const Admin: React.FC = () => {
     event.preventDefault()
     const input = { bookTitle: bookTitle, authorName: authorName, genre: genre }
     await Axios.post('http://localhost:3000/book/add', input).then((response) => {
-      if (response.data === "error") {
+      if (response.data === "fail") {
         alert("The attempt to add a book has failed.")
       } else {
         alert('The book is now added.')
@@ -50,10 +50,10 @@ const Admin: React.FC = () => {
     event.preventDefault()
     const input = { bookTitle: book }
     await Axios.post('http://localhost:3000/book/delete', input).then((response) => {
-      if (response.data === "error") {
-        alert("The attempt to delete the book has failed.")
+      if (response.data === "fail") {
+        alert("No book found to delete")
       } else {
-        alert('The book is now deleted.')
+        alert('The book has been deleted.')
       }
     })
   };
@@ -75,14 +75,12 @@ const Admin: React.FC = () => {
               label="id"
               type="number"
               min="2"
-              required
               name="userId"
               value={userId}
               onChange={handleFormFields} />
             <FormInput
               label="Username"
               type="text"
-              required
               name="username"
               value={username}
               onChange={handleFormFields} />

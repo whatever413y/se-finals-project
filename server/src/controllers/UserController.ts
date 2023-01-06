@@ -31,8 +31,9 @@ class UserController {
     public deleteUser = async (req: Request, res: Response) => {   
         try {
             const input: FormInputs = req.body;
-            userService.deleteUser(input)
-            return res.json("success")
+            userService.deleteUser(input, (result: string) => {
+                return res.json(result)
+            })
         } catch (error) {
             throw error;
         }

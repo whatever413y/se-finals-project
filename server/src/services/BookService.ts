@@ -16,7 +16,11 @@ class BookService {
     public deleteBook = (input: FormInputs, callback: Function) => {
         try {
             bookRepo.deleteBook(input, (result: string) => {
-                return callback(result)
+                const res: {affectedRows: number} = JSON.parse(result)
+                if (res.affectedRows === 0) {
+                    return callback("fail")
+                }
+                return callback("success")
             })
         } catch (error) {
             throw error;
