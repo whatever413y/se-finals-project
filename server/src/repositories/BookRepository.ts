@@ -23,7 +23,6 @@ class BookRepository {
         const sqlDeleteBook = `DELETE FROM book WHERE bookTitle='${bookTitle}';`
     
         db.query(sqlDeleteBook, (error, result) => {
-            console.log(result)
             const res = JSON.stringify(result)
             return callback(res)
         });
