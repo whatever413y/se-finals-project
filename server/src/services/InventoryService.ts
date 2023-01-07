@@ -13,9 +13,21 @@ class InventoryService {
         }
     }
 
-    public removeBook = (input: FormInputs) => {
+    public removeBook = (input: FormInputs, callback: Function) => {
         try {
-            inventoryRepo.removeBook(input)
+            inventoryRepo.checkAvailability(input, (result: string) => {
+                if(result === "[]") {
+                    inventoryRepo.removeBook(input, (result: string) => {
+                        const res: {affectedRows: number} = JSON.parse(result)
+                        if (res.affectedRows === 0) {
+                            return callback("fail")
+                        }
+                        return callback("success")
+                    })
+                } else {
+                    return callback("fail")
+                }
+            })
         } catch (error) {
             throw error;
         }

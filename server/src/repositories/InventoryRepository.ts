@@ -42,14 +42,31 @@ class InventoryRepository {
         return sqlUpdateBookNull
     }
 
-    public removeBook = (input: FormInputs) => {
+    public checkAvailability = (input: FormInputs, callback: Function) => {
+        const { bookTitle }: FormInputs = input
+        const sqlQuery = `SELECT book.bookTitle, book.isAvailable
+        FROM book INNER JOIN inventory
+        ON inventory.user_id=book.user_id
+        WHERE isAvailable=0 AND book.bookTitle='${bookTitle}';`
+
+        db.query(sqlQuery, (error, result) => {
+            const res = JSON.stringify(result)
+            console.log(result)
+            return callback(res)
+        })
+    }
+
+    public removeBook = (input: FormInputs, callback: Function) => {
         const { bookTitle }: FormInputs = input
         const sqlRemove = 
         `DELETE FROM inventory 
         WHERE bookTitle='${bookTitle}';`
         try {
             db.query(this.sqlUpdateBookNull(bookTitle))
-            db.query(sqlRemove)
+            db.query(sqlRemove, (error, result) => {
+                const res = JSON.stringify(result)
+                return callback(res)
+            })
         } catch (error) {
             throw error
         }

@@ -64,7 +64,11 @@ const Home: React.FC = () => {
 
   const removeFromInventory = async (book: string) => {
     const input = { bookTitle: book}
-    await Axios.post('http://localhost:3000/inventory/delete', input)
+    await Axios.post('http://localhost:3000/inventory/delete', input).then((response) => {
+      if (response.data === 'fail') {
+        alert('Cannot remove. Please return your book first')
+      }
+    })
   }
 
   const handleInventory = async () => {

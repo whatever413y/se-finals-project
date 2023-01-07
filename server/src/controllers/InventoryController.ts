@@ -18,8 +18,9 @@ class InventoryController {
     public removeBook = async (req: Request, res: Response) => {
         try {
             const input: FormInputs = req.body;
-            inventoryService.removeBook(input)
-            return res.json("success")
+            inventoryService.removeBook(input, (result: string) => {
+                return res.json(result)
+            })
         } catch (error) {
             throw error;
         }

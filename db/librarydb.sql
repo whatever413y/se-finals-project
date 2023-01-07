@@ -353,8 +353,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Old Man and the Sea', 'Ernest Hemingway', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Grapes of Wrath', 'John Steinbeck', 'Novel', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Of Mice and Men', 'John Steinbeck', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Red Badge of Courage', 'Stephen Crane', 'Novel', TRUE);
