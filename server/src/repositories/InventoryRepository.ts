@@ -51,7 +51,6 @@ class InventoryRepository {
 
         db.query(sqlQuery, (error, result) => {
             const res = JSON.stringify(result)
-            console.log(result)
             return callback(res)
         })
     }
