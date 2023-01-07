@@ -3,7 +3,7 @@ import FormInputs from '../models/FormInputs';
 
 const generateAccessToken = (input: FormInputs): string => {
     const {username, password} = input
-    return jwt.sign(input, process.env.TOKEN_KEY as string, { expiresIn: "1800" });
+    return jwt.sign(input, process.env.TOKEN_KEY as string, { expiresIn: "24h" });
 }
 
 export default generateAccessToken

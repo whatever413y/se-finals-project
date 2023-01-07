@@ -77,8 +77,11 @@ const Home: React.FC = () => {
   const handleBorrow = async () => {
     const input = { id: user.id }
     await Axios.post('http://localhost:3000/borrow/', input).then((response) => {
-      if (response.data === "success")
-      alert('Borrowed Successfully')
+      if (response.data === "fail") {
+        alert('Borrow failed. Please return your books first')
+      } else {
+        alert('Borrowed Successfully')
+      }
     })
   }
 

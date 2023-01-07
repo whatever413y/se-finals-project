@@ -28,7 +28,8 @@ CREATE TABLE `book` (
   `authorName` VARCHAR(45) NOT NULL,
   `genre` VARCHAR(45) NOT NULL,
   `isAvailable` BOOLEAN NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `bookTitle_UNIQUE` (`bookTitle` ASC) VISIBLE
 );
 
 DROP TABLE IF EXISTS `inventory`;
@@ -96,8 +97,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Lord of the Rings: The Return of the King', 'J.R.R. Tolkien', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Wheel of Time', 'Robert Jordan', 'Fantasy', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Dark Tower', 'Stephen King', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Name of the Wind', 'Patrick Rothfuss', 'Fantasy', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -195,12 +194,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Island of Dr. Moreau', 'H.G. Wells', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Lost World', 'Arthur Conan Doyle', 'Adventure', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Return of Sherlock Holmes', 'Arthur Conan Doyle', 'Adventure', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Adventures of Sherlock Holmes', 'Arthur Conan Doyle', 'Adventure', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Around the World in Eighty Days', 'Jules Verne', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Twenty Thousand Leagues Under the Sea', 'Jules Verne', 'Adventure', TRUE);
@@ -216,8 +209,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Three Musketeers', 'Alexandre Dumas', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Man in the Iron Mask', 'Alexandre Dumas', 'Adventure', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Hound of the Baskervilles', 'Arthur Conan Doyle', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Adventure of the Speckled Band', 'Arthur Conan Doyle', 'Adventure', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -298,8 +289,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Avenues of the Diamond', 'Gwy Saludes', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
-    VALUES ('Safe Skies, Archer', 'Gwy Saludes', 'Romance', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Forrest Gump', 'winston groo', 'Romance', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable) 
     VALUES ('Me Before You', 'Jojo Moyes', 'Romance', TRUE);
@@ -321,8 +310,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('It Ends with Us', 'Colleen Hoover', 'Romance', TRUE);
 
 /*Novel*/
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('Pride and Prejudice', 'Jane Austen', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Moby-Dick', 'Herman Melville', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
@@ -371,16 +358,6 @@ INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('Of Mice and Men', 'John Steinbeck', 'Novel', TRUE);
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)
     VALUES ('The Red Badge of Courage', 'Stephen Crane', 'Novel', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Call of the Wild', 'Jack London', 'Novel', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Sea Wolf', 'Jack London', 'Novel', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Time Machine', 'H.G. Wells', 'Novel', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The War of the Worlds', 'H.G. Wells', 'Novel', TRUE);
-INSERT INTO book (bookTitle, authorName, genre, isAvailable)
-    VALUES ('The Invisible Man', 'H.G. Wells', 'Novel', TRUE);
 
 /*Mythology*/
 INSERT INTO book (bookTitle, authorName, genre, isAvailable)

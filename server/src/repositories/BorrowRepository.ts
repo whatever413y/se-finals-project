@@ -11,7 +11,7 @@ class BorrowRepository {
         return sqlUpdate
     }
 
-    public borrow = (input: FormInputs, borrowDate: string, returnDate: string) => {
+    public borrow = (input: FormInputs, borrowDate: string, returnDate: string, callback: Function) => {
         const { id }: FormInputs = input
         const sqlInsert = 
         `INSERT INTO borrow (user_id, borrowDate, returnDate) 
@@ -19,7 +19,10 @@ class BorrowRepository {
         try {
             db.query(this.sqlUpdate(id))
             db.query(sqlInsert, (error) => {
-                console.log(error)
+                if(error) {
+                    return callback("fail")
+                }
+                return callback("success")
             })
         } catch (error) {
             throw error;

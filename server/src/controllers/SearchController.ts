@@ -8,7 +8,7 @@ class SearchController {
         try {
             const input: FormInputs = req.body;
             searchService.searchBook(input, (result: string) => {
-                const results = JSON.parse(result)
+                const results: [] = JSON.parse(result)
                 return res.json(results)
             })
         } catch (error) {
@@ -20,7 +20,7 @@ class SearchController {
         try {
             const input: FormInputs = req.body;
             searchService.searchGenre(input, (result: string) => {
-                const results = JSON.parse(result)
+                const results: [] = JSON.parse(result)
                 return res.json(results)
             })
         } catch (error) {

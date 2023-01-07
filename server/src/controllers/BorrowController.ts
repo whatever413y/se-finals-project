@@ -7,8 +7,9 @@ class BorrowController {
     public borrow = async (req: Request, res: Response) => {
         const input: FormInputs = req.body;
         try {
-            borrowService.borrow(input)
-            return res.json("success")
+            borrowService.borrow(input, (result: string) => {
+                return res.json(result)
+            })
         } catch (error) {
             throw error;
         }
