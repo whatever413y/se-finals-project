@@ -143,7 +143,7 @@ const Home: React.FC = () => {
                   <tr>
                     <th>Book</th>
                     <th>Author</th>
-                    <th>isAvailable?</th>
+                    <th>Availability</th>
                   </tr>
                 </thead>
                 <tbody>

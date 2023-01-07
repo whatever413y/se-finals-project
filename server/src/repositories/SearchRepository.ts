@@ -7,7 +7,7 @@ class SearchRepository {
         const { search }: FormInputs = input
         const sqlSelect = 
         `SELECT id, bookTitle, authorName, isAvailable FROM book 
-        WHERE bookTitle='${search}' OR authorName='${search}';`
+        WHERE bookTitle like '%${search}%' OR authorName like '%${search}%';`
         try {
             db.query(sqlSelect, (error, result) => {
                 const res: string = JSON.stringify(result)

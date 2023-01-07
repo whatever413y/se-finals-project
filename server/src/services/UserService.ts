@@ -1,4 +1,3 @@
-import { RefCallback } from "react";
 import FormInputs from "../models/FormInputs";
 import User from "../models/UserModel";
 import { userRepo } from "../repositories/UserRepository";
@@ -25,6 +24,10 @@ class UserService {
 
     public deleteUser = (input: FormInputs, callback: Function) => {
         try {
+            const { username } = input
+            if (username === 'admin' || username === 'testusername') {
+                return callback("fail")
+            }
             userRepo.deleteUser(input, (result: string) => {
                 const res: {affectedRows: number} = JSON.parse(result)
                 if (res.affectedRows === 0) {

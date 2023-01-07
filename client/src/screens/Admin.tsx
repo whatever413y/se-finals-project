@@ -4,7 +4,7 @@ import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
-  userId: 0,
+  userId: 3,
   username: '',
   bookTitle: '',
   authorName: '',
@@ -75,7 +75,7 @@ const Admin: React.FC = () => {
             <FormInput
               label="id"
               type="number"
-              min="2"
+              min="3"
               name="userId"
               value={userId}
               onChange={handleFormFields} />

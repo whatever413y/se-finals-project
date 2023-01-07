@@ -68,6 +68,7 @@ INSERT INTO user (username, password, fullname, role)
 VALUES ('admin', 'root', 'Administrator', 'admin');
 INSERT INTO user (username, password, fullname, role) 
 VALUES ('testusername', 'testpassword', 'testname', 'user');
+ALTER TABLE user AUTO_INCREMENT=4;
 
 /* BOOKS */
 /*Fantasy*/
