@@ -19,9 +19,7 @@ pipeline {
         }
         stage('Exit') {
             steps {
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh 'set -x'
-                sh 'kill $(cat .pidfile)'
+                input message: 'Finished using the website? (Click "Proceed" to close website)'
             }
         }
     }
