@@ -12,15 +12,16 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        // stage('Start') {
-        //     steps {
-        //         sh 'npm run start'
-        //     }
-        // }
-        stage('Start') {
+        stage('Deploy') {
             steps {
-                // sh 'npm run start'
-                sh 'docker-compone up'
+                sh 'npm run start'
+            }
+        }
+        stage('Exit') {
+            steps {
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh 'set -x'
+                sh 'kill $(cat .pidfile)'
             }
         }
     }
