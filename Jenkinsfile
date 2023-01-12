@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Exit') {
             steps {
-                input message: 'Finished using the website? (Click "Proceed" to close website)'
+                input message: 'Finished using the website? (Click "Proceed" to close website) '
             }
         }
     }
