@@ -45,7 +45,6 @@ const Login: React.FC = () => {
     <div className='App-header'>
       <div className="card">
         <h2>Sign In</h2>
-        <h2>Sign In2</h2>
         <form onSubmit={handleUserLogin}>
           <FormInput
             label="Username"
