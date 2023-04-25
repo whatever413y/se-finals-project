@@ -1,5 +1,4 @@
 import express, { Express } from "express";
-import serverless from "serverless-http"
 import path from "path";
 import cors from "cors";
 import dotenv from 'dotenv';
@@ -40,5 +39,3 @@ app.use(BorrowRoute)
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
-
-export default serverless(app)
