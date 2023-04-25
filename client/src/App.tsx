@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {HashRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register"
@@ -8,7 +8,7 @@ import User from "./screens/User";
 
 const App: React.FC = () => {
   return (
-    <Router basename="/index.html">
+    <Router>
         <Routes>
           <Route path="/" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
