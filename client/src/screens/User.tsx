@@ -39,12 +39,12 @@ const User: React.FC = () => {
     const handleUserUpdate = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       const input = { username: username, password: password, fullname: fullname, id: defaultUser.id }
-      await Axios.post('http://localhost:3000/user/update', input).then(handleLogin)
+      await Axios.post('https://se-finals-project-production.up.railway.app/user/update', input).then(handleLogin)
     };
 
     const handleLogin = async () => {
         const input = { username: username, password: password }
-        await Axios.post('http://localhost:3000/user/login', input).then((response) => {
+        await Axios.post('https://se-finals-project-production.up.railway.app/user/login', input).then((response) => {
         const user: User = response.data
           setUser(user)
           alert('Your profile has been updated successfully!')

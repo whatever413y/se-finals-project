@@ -38,21 +38,21 @@ const Home: React.FC = () => {
   const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const input = { search: search }
-    await Axios.post('http://localhost:3000/search/book', input).then((response) => {
+    await Axios.post('https://se-finals-project-production.up.railway.app/search/book', input).then((response) => {
       setResults(response.data)
     })
   }
 
   const handleCategorySearch = async (category: string) => {
     const input = { search: category }
-    await Axios.post('http://localhost:3000/search/genre', input).then((response) => {
+    await Axios.post('https://se-finals-project-production.up.railway.app/search/genre', input).then((response) => {
       setResults(response.data)
     })
   }
 
   const addToInventory = async (book: string) => {
     const input = { bookTitle: book, id: user.id }
-    await Axios.post('http://localhost:3000/inventory/add', input)
+    await Axios.post('https://se-finals-project-production.up.railway.app/inventory/add', input)
     .then((response) => {
       if(response.data === "fail") {
         alert("Book unavailable or already in inventory!")
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
 
   const removeFromInventory = async (book: string) => {
     const input = { bookTitle: book}
-    await Axios.post('http://localhost:3000/inventory/delete', input).then((response) => {
+    await Axios.post('https://se-finals-project-production.up.railway.app/inventory/delete', input).then((response) => {
       if (response.data === 'fail') {
         alert('Cannot remove. Please return your book first')
       }
@@ -73,14 +73,14 @@ const Home: React.FC = () => {
 
   const handleInventory = async () => {
     const input = { id: user.id }
-    await Axios.post('http://localhost:3000/inventory/fetch', input).then((response) => {
+    await Axios.post('https://se-finals-project-production.up.railway.app/inventory/fetch', input).then((response) => {
       setInventory(response.data)
     })
   }
 
   const handleBorrow = async () => {
     const input = { id: user.id }
-    await Axios.post('http://localhost:3000/borrow/', input).then((response) => {
+    await Axios.post('https://se-finals-project-production.up.railway.app/borrow/', input).then((response) => {
       if (response.data === "fail") {
         alert('Borrow failed. Please return your books first')
       } else {

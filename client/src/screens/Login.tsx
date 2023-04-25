@@ -27,7 +27,7 @@ const Login: React.FC = () => {
     const handleUserLogin = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       const input = { username: username, password: password }
-      await Axios.post('http://localhost:3000/user/login', input).then((response) => {
+      await Axios.post('https://se-finals-project-production.up.railway.app/user/login', input).then((response) => {
         const user: User = response.data
         if(user.role === "admin") {
           setUser(user)
