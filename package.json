@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "tsc",
     "build": "webpack",
-    "start": "nodemon dist/index.js",
+    "start": "tsc && node dist/index.js",
     "docker": "docker-compose up --build --force-recreate"
   },
   "keywords": [],

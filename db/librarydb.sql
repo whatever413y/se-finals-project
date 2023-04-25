@@ -16,7 +16,7 @@ CREATE TABLE `user` (
   `fullname` VARCHAR(45) NOT NULL,
   `role` VARCHAR(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC)
 );
 
 DROP TABLE IF EXISTS `book`;
@@ -29,7 +29,7 @@ CREATE TABLE `book` (
   `genre` VARCHAR(45) NOT NULL,
   `isAvailable` BOOLEAN NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `bookTitle_UNIQUE` (`bookTitle` ASC) VISIBLE
+  UNIQUE INDEX `bookTitle_UNIQUE` (`bookTitle` ASC)
 );
 
 DROP TABLE IF EXISTS `inventory`;
@@ -40,7 +40,7 @@ CREATE TABLE `inventory` (
   `book_id` INT DEFAULT NULL,
   `bookTitle` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `bookTitle_UNIQUE` (`bookTitle` ASC) VISIBLE,
+  UNIQUE INDEX `bookTitle_UNIQUE` (`bookTitle` ASC),
   CONSTRAINT `fk_user` FOREIGN KEY (`user_id`)  
   REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_book` FOREIGN KEY (`book_id`)  
@@ -57,7 +57,7 @@ CREATE TABLE `borrow` (
   `borrowDate` DATE NOT NULL,
   `returnDate` DATE NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
   CONSTRAINT `fk_inventory` FOREIGN KEY (`user_id`)  
   REFERENCES inventory(user_id) 
   ON DELETE CASCADE 
