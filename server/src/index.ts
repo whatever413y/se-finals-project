@@ -17,7 +17,7 @@ dotenv.config()
 const app: Express = express();
 const PORT: number = 3000;
 
-// app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../public")));
 app.use(cors());
 app.use(express.urlencoded({extended: true}) as RequestHandler)
 app.use(express.json() as RequestHandler);
