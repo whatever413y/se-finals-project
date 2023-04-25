@@ -3,8 +3,3 @@
 
 [dev]
   publish = "public"
-
-  [[redirects]]
-  from = "/"
-  to = "/.netlify/functions/index"
-  status = 200
