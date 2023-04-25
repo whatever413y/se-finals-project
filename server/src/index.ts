@@ -20,7 +20,6 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(cors());
 app.use(express.urlencoded({extended: true}) as RequestHandler)
 app.use(express.json() as RequestHandler);
-app.use(`/.netlify/functions/api`, express.Router());
 
 db.connect((err) => {
   if (err) {
