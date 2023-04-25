@@ -38,14 +38,14 @@ const Home: React.FC = () => {
   const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const input = { search: search }
-    await Axios.post('library-management-se2-server.netlify.app/search/book', input).then((response) => {
+    await Axios.post('http://localhost:3000/search/book', input).then((response) => {
       setResults(response.data)
     })
   }
 
   const handleCategorySearch = async (category: string) => {
     const input = { search: category }
-    await Axios.post('library-management-se2-server.netlify.app/search/genre', input).then((response) => {
+    await Axios.post('http://localhost:3000/search/genre', input).then((response) => {
       setResults(response.data)
     })
   }

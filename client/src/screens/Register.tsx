@@ -27,7 +27,7 @@ const Register: React.FC = () => {
     const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       const input = { fullname: fullname, username: username, password: password }
-      await Axios.post('library-management-se2-server.netlify.app/user/register', input).then((response) => {
+      await Axios.post('http://localhost:3000/user/register', input).then((response) => {
         response.data === "fail" ? alert("Registration Failed. Username already taken.") : alert('Registered Successfully!')
         // if(response.data === "fail") {
         //   alert("Registration Failed. Username already taken.")

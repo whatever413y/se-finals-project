@@ -25,7 +25,7 @@ const Admin: React.FC = () => {
   const handleUserDelete = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const input = { id: userId, username: username }
-    await Axios.post('library-management-se2-server.netlify.app/user/delete', input).then((response) => {
+    await Axios.post('http://localhost:3000/user/delete', input).then((response) => {
       if (response.data === "fail") {
         alert("No account found to delete.")
       } else {
@@ -37,7 +37,7 @@ const Admin: React.FC = () => {
   const handleBookAdd = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const input = { bookTitle: bookTitle, authorName: authorName, genre: genre }
-    await Axios.post('library-management-se2-server.netlify.app/book/add', input).then((response) => {
+    await Axios.post('http://localhost:3000/book/add', input).then((response) => {
       if (response.data === "fail") {
         alert("The attempt to add a book has failed.")
       } else {
@@ -49,7 +49,7 @@ const Admin: React.FC = () => {
   const handleBookDelete = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const input = { bookTitle: book }
-    await Axios.post('library-management-se2-server.netlify.app/book/delete', input).then((response) => {
+    await Axios.post('http://localhost:3000/book/delete', input).then((response) => {
       if (response.data === "fail") {
         alert("No book found to delete")
       } else {
