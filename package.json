@@ -8,7 +8,7 @@
     "build": "webpack",
     "start": "tsc && node dist/index.js",
     "docker": "docker-compose up --build --force-recreate",
-    "deploy": "netlify deploy --prod"
+    "deploy": "netlify-lambda build src && netlify-lambda serve src"
   },
   "keywords": [],
   "author": "",

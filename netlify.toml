@@ -1,0 +1,10 @@
+[build]
+  functions = "dist"
+
+[dev]
+  publish = "public"
+
+  [[redirects]]
+  from = "/"
+  to = "/.netlify/functions/index"
+  status = 200
